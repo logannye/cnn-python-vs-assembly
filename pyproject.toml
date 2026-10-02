@@ -16,11 +16,18 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10", "ruff>=0.9,<1"]
+benchmark = [
+    "numpy>=2,<3",
+    "scikit-learn>=1.5,<2",
+    "matplotlib>=3.9,<4",
+    "psutil>=6,<8",
+]
 
 [project.scripts]
 cnn-train = "classifier.train:main"
 cnn-evaluate = "classifier.evaluate:main"
 cnn-predict = "classifier.predict:main"
+cnn-benchmark = "classifier.benchmark:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

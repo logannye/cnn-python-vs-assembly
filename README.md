@@ -152,6 +152,8 @@ and shuffling; exact results may still differ across hardware and PyTorch versio
 
 ## Development
 
+Install experiment/test dependencies with `python -m pip install -e '.[dev,benchmark]'`.
+
 ```bash
 ruff check .
 ruff format --check .
@@ -163,6 +165,15 @@ labels, gradients, and the complete train → save → load → evaluate → pre
 path. GitHub Actions also runs the documented command-line workflow on each
 push and pull request. Datasets, generated model weights, and virtual
 environments are excluded from Git.
+
+## Quantitative CIFAR-10 baseline
+
+The optional `cnn-benchmark` command measures the same CNN on the complete
+CIFAR-10 dataset with a fixed validation split and three training seeds.
+It retains predictions, checkpoints, learning curves, per-class metrics,
+calibration, uncertainty intervals, and CPU timing/memory measurements.
+See [the prespecified experiment protocol](experiments/PROTOCOL.md) for settings,
+reproduction commands, metric definitions, and comparison limits.
 
 For the underlying library conventions, see PyTorch's
 [model saving and loading guide](https://docs.pytorch.org/tutorials/beginner/basics/saveloadrun_tutorial.html)
