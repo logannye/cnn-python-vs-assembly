@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-02T22:56:01.435355+00:00",
+  "protocol": {
+    "dataset": "CIFAR-10",
+    "dataset_source": "https://www.cs.toronto.edu/~kriz/cifar.html",
+    "dataset_citation": "Alex Krizhevsky, Learning Multiple Layers of Features from Tiny Images, 2009",
+    "train_examples": 45000,
+    "validation_examples": 5000,
+    "test_examples": 10000,
+    "split_seed": 1729,
+    "seeds": [
+      43
+    ],
+    "epochs": 25,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weight_decay": 0,
+    "scheduler": null,
+    "image_size": 32,
+    "normalization_mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "normalization_std": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "augmentation": "RandomHorizontalFlip(p=0.5) training only",
+    "initialization": "PyTorch default, from scratch; no pretrained weights",
+    "checkpoint_selection": "highest validation accuracy; ties use lower validation loss",
+    "test_policy": "Evaluate once after all epochs and checkpoint selection for each seed",
+    "training_curve_scope": "Augmented pre-update minibatch metrics; changing weights",
+    "final_train_scope": "Deterministic unaugmented training split at selected checkpoint",
+    "accuracy_interval": "95% Wilson; one fitted model, iid test examples",
+    "macro_f1_interval": "95% bootstrap; 1000 multinomial draws from confusion counts",
+    "ece_bins": 15,
+    "class_names": [
+      "airplane",
+      "automobile",
+      "bird",
+      "cat",
+      "deer",
+      "dog",
+      "frog",
+      "horse",
+      "ship",
+      "truck"
+    ],
+    "random_uniform_accuracy": 0.1,
+    "majority_class_accuracy": 0.1,
+    "uniform_nll": 2.302585092994046,
+    "uniform_brier_score": 0.9,
+    "deterministic_algorithms": true
+  },
+  "source": {
+    "git_revision": "ec931522316e4c0af783da9425a5797422d4f301",
+    "working_tree_clean": true,
+    "model_source_sha256": "12f4bb6d92783000e89625408ac2a734892c8eeabe1b4d199aff09c39e77a0b2",
+    "command": [
+      "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/src/classifier/benchmark.py",
+      "--data-dir",
+      "data/cifar10",
+      "--output",
+      "results/mac-cpu-25-seed-runs/baseline-seed-43",
+      "--seeds",
+      "43",
+      "--split-seed",
+      "1729",
+      "--epochs",
+      "25",
+      "--batch-size",
+      "128",
+      "--learning-rate",
+      "0.001",
+      "--threads",
+      "2"
+    ],
+    "github_run_url": null
+  },
+  "data": {
+    "split_indices_sha256": "a983c076ab303696f8edb2b6825082b40f527edf914ad2072e76cc973dadbcf8",
+    "training_images_sha256": "47af8b02cfcfb6cdf3dbbd1969ad7f1b70f4413f6f80f437b020ee4e5bc8304a",
+    "training_labels_sha256": "f5cfe00b0f00968c0cc5ff3b1d2de51b10e33efa277c2986f4e0fa63e58c9f4f",
+    "test_images_sha256": "f9b1e2130bab680db56eb06d886f7f1ad0f1183907ceff4659d1735c890f5b04",
+    "test_labels_sha256": "cbb7365de8ed11f05cc4c3a1e7f78144127c5e851efd83762fb18202461230bb",
+    "index_convention": "train/validation indices address official train set; test indices address official test set"
+  },
+  "environment": {
+    "python": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "cpu_model": "Apple M4 Max",
+    "logical_cpus": 16,
+    "physical_cpus": 16,
+    "total_memory_bytes": 137438953472,
+    "torch_threads": 2,
+    "torch_interop_threads": 1,
+    "device": "cpu",
+    "packages": {
+      "torch": "2.14.1",
+      "torchvision": "0.29.1",
+      "numpy": "2.5.2",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "Pillow": "12.3.0",
+      "psutil": "7.2.2"
+    },
+    "macos": {
+      "collected_at_utc": "2026-10-02T22:56:02.424596+00:00",
+      "optional_errors": {},
+      "SPHardwareDataType": [
+        {
+          "chip_type": "Apple M4 Max",
+          "machine_model": "Mac16,5",
+          "machine_name": "MacBook Pro",
+          "number_processors": "proc 16:12:4",
+          "physical_memory": "128 GB"
+        }
+      ],
+      "SPDisplaysDataType": [
+        {
+          "sppci_model": "Apple M4 Max",
+          "sppci_cores": "40",
+          "spdisplays_metal": "spdisplays_supported"
+        }
+      ],
+      "power_source": "AC Power"
+    }
+  },
+  "dataset_download_and_loading_seconds": 0.7031955409329385,
+  "completed_at_utc": "2026-10-02T22:59:47.826066+00:00"
+}

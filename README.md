@@ -181,6 +181,16 @@ achieved **46.36% mean test accuracy** across three seeds after 10 epochs
 [baseline release](https://github.com/logannye/simple-cnn/releases/tag/baseline-cifar10-v1)
 preserves all checkpoints, predictions, split indices, and measurements.
 
+The [25-epoch Mac CPU baseline](experiments/baselines/cifar10-mac-cpu-25-v1/README.md)
+achieved **51.99% mean test accuracy** across the same three seeds
+(0.57 percentage-point sample standard deviation), using two compute threads
+on an Apple M4 Max. Training and validation averaged **217.3 seconds per seed**.
+Its [protocol](experiments/MAC_CPU_25_PROTOCOL.md), full quantitative report,
+and [complete release](https://github.com/logannye/simple-cnn/releases/tag/baseline-cifar10-mac-cpu-25-v1)
+retain the measurements for later experiments. The 5.63 percentage-point
+increase over the original reference changes both epoch budget and computing
+platform; it does not isolate the effect of either change.
+
 For the underlying library conventions, see PyTorch's
 [model saving and loading guide](https://docs.pytorch.org/tutorials/beginner/basics/saveloadrun_tutorial.html)
 and torchvision's [ImageFolder documentation](https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.ImageFolder.html).

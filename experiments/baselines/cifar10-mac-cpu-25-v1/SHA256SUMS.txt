@@ -1,0 +1,2 @@
+34fcd748c6049ec248d9b9d94eb38e4483c3cdf93fc18bde9e75c7883367c2d2  cifar10-mac-cpu-25-v1.tar.gz
+d4aadec71718de3b27749e2dd1f0b3974300b7efbb3579973acc50e6dcc0fc35  cifar10-mac-cpu-25-v1-audit.json
