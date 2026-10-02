@@ -203,3 +203,13 @@ It uses exact exported initialization, sample order and augmentation choices
 from the 25-epoch Mac baseline, with independent numerical and runtime parity
 checks before training. See the [matched experiment protocol](experiments/ASSEMBLY_PROTOCOL.md)
 for reproduction criteria and performance measurement scopes.
+
+The [retained assembly experiment](experiments/baselines/cifar10-assembly-25-v1/README.md)
+completed all three 25-epoch CPU runs. Mean test accuracy was **51.990%**, compared
+with **51.993%** for PyTorch. Mean measured training/validation time was
+**99.45 seconds versus 217.32 seconds** per seed. Assembly's timer excludes the
+precomputed shuffle/flip schedule; this is a comparison of these implementations,
+not an isolated language effect. The
+[assembly release](https://github.com/logannye/simple-cnn/releases/tag/baseline-cifar10-assembly-25-v1)
+preserves source, executable, initialization, schedules, checkpoints, indexed
+predictions, numerical parity evidence, detailed metrics and paired comparisons.

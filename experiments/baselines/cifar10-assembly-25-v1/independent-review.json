@@ -1,0 +1,1306 @@
+{
+  "status": "passed",
+  "completed_at_utc": "2026-10-02T23:35:01.732666+00:00",
+  "source_revision": "ba36c840759c9bf32db3827bb40180107d97d7db",
+  "check_count": 324,
+  "artifact_files_verified": 97,
+  "checks": [
+    {
+      "name": "measured_source_revision",
+      "passed": true
+    },
+    {
+      "name": "current_HEAD_matches_frozen_source",
+      "passed": true
+    },
+    {
+      "name": "working_tree_clean",
+      "passed": true
+    },
+    {
+      "name": "prepared_manifest_bound_to_execution",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/ABI.md",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/CONVOLUTION.md",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/MODEL.md",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/Makefile",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/README.md",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/RUNTIME.md",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/collect.py",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/convolution.S",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/model.S",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/prepare.py",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/run_experiment.py",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/runtime.S",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/smoke.py",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/test_runtime_safety.py",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/validate.py",
+      "passed": true
+    },
+    {
+      "name": "source_snapshot_assembly/validate_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "three_executable_copies_identical",
+      "passed": true
+    },
+    {
+      "name": "all_recorded_protocol_fields_match_saved_python_baseline",
+      "passed": true
+    },
+    {
+      "name": "all_recorded_dataset_fingerprints_match_saved_python_baseline",
+      "passed": true
+    },
+    {
+      "name": "unchanged_PyTorch_architecture_source",
+      "passed": true
+    },
+    {
+      "name": "prior_gate_numerical-parity.json",
+      "passed": true
+    },
+    {
+      "name": "prior_gate_runtime-parity.json",
+      "passed": true
+    },
+    {
+      "name": "gate_binary_runtime-parity.json",
+      "passed": true
+    },
+    {
+      "name": "prior_gate_runtime-safety.json",
+      "passed": true
+    },
+    {
+      "name": "gate_binary_runtime-safety.json",
+      "passed": true
+    },
+    {
+      "name": "exact_split_train",
+      "passed": true
+    },
+    {
+      "name": "exact_split_validation",
+      "passed": true
+    },
+    {
+      "name": "exact_split_test",
+      "passed": true
+    },
+    {
+      "name": "actual_data_training_images_sha256",
+      "passed": true
+    },
+    {
+      "name": "actual_data_test_images_sha256",
+      "passed": true
+    },
+    {
+      "name": "actual_data_training_labels_sha256",
+      "passed": true
+    },
+    {
+      "name": "actual_data_test_labels_sha256",
+      "passed": true
+    },
+    {
+      "name": "seed42_record_agreement",
+      "passed": true
+    },
+    {
+      "name": "seed42_source_fixed",
+      "passed": true
+    },
+    {
+      "name": "seed42_full_command",
+      "passed": true
+    },
+    {
+      "name": "seed42_input_images.bin",
+      "passed": true
+    },
+    {
+      "name": "seed42_input_init.bin",
+      "passed": true
+    },
+    {
+      "name": "seed42_input_labels.bin",
+      "passed": true
+    },
+    {
+      "name": "seed42_input_schedule.bin",
+      "passed": true
+    },
+    {
+      "name": "seed42_input_train_indices.bin",
+      "passed": true
+    },
+    {
+      "name": "seed42_input_val_indices.bin",
+      "passed": true
+    },
+    {
+      "name": "seed42_all_epoch_permutations_and_flips",
+      "passed": true
+    },
+    {
+      "name": "seed42_retained_schedule_hash",
+      "passed": true
+    },
+    {
+      "name": "seed42_25_epochs_and_same_adapted_history",
+      "passed": true
+    },
+    {
+      "name": "seed42_every_checkpoint_validation_selected",
+      "passed": true
+    },
+    {
+      "name": "seed42_all_runtime_fields_retained",
+      "passed": true
+    },
+    {
+      "name": "seed42_full_counts_and_checkpoint",
+      "passed": true
+    },
+    {
+      "name": "seed42_throughput",
+      "passed": true
+    },
+    {
+      "name": "seed42_checkpoint_hash_and_validation_accuracy",
+      "passed": true
+    },
+    {
+      "name": "seed42_timing1",
+      "passed": true
+    },
+    {
+      "name": "seed42_timing128",
+      "passed": true
+    },
+    {
+      "name": "seed42_summary_row",
+      "passed": true
+    },
+    {
+      "name": "seed42_paired_test_membership",
+      "passed": true
+    },
+    {
+      "name": "seed42_paired_counts_and_accuracy",
+      "passed": true
+    },
+    {
+      "name": "seed42_paired_bootstrap_interval",
+      "passed": true
+    },
+    {
+      "name": "seed42_README_paired_table",
+      "passed": true
+    },
+    {
+      "name": "seed43_record_agreement",
+      "passed": true
+    },
+    {
+      "name": "seed43_source_fixed",
+      "passed": true
+    },
+    {
+      "name": "seed43_full_command",
+      "passed": true
+    },
+    {
+      "name": "seed43_input_images.bin",
+      "passed": true
+    },
+    {
+      "name": "seed43_input_init.bin",
+      "passed": true
+    },
+    {
+      "name": "seed43_input_labels.bin",
+      "passed": true
+    },
+    {
+      "name": "seed43_input_schedule.bin",
+      "passed": true
+    },
+    {
+      "name": "seed43_input_train_indices.bin",
+      "passed": true
+    },
+    {
+      "name": "seed43_input_val_indices.bin",
+      "passed": true
+    },
+    {
+      "name": "seed43_all_epoch_permutations_and_flips",
+      "passed": true
+    },
+    {
+      "name": "seed43_retained_schedule_hash",
+      "passed": true
+    },
+    {
+      "name": "seed43_25_epochs_and_same_adapted_history",
+      "passed": true
+    },
+    {
+      "name": "seed43_every_checkpoint_validation_selected",
+      "passed": true
+    },
+    {
+      "name": "seed43_all_runtime_fields_retained",
+      "passed": true
+    },
+    {
+      "name": "seed43_full_counts_and_checkpoint",
+      "passed": true
+    },
+    {
+      "name": "seed43_throughput",
+      "passed": true
+    },
+    {
+      "name": "seed43_checkpoint_hash_and_validation_accuracy",
+      "passed": true
+    },
+    {
+      "name": "seed43_timing1",
+      "passed": true
+    },
+    {
+      "name": "seed43_timing128",
+      "passed": true
+    },
+    {
+      "name": "seed43_summary_row",
+      "passed": true
+    },
+    {
+      "name": "seed43_paired_test_membership",
+      "passed": true
+    },
+    {
+      "name": "seed43_paired_counts_and_accuracy",
+      "passed": true
+    },
+    {
+      "name": "seed43_paired_bootstrap_interval",
+      "passed": true
+    },
+    {
+      "name": "seed43_README_paired_table",
+      "passed": true
+    },
+    {
+      "name": "seed44_record_agreement",
+      "passed": true
+    },
+    {
+      "name": "seed44_source_fixed",
+      "passed": true
+    },
+    {
+      "name": "seed44_full_command",
+      "passed": true
+    },
+    {
+      "name": "seed44_input_images.bin",
+      "passed": true
+    },
+    {
+      "name": "seed44_input_init.bin",
+      "passed": true
+    },
+    {
+      "name": "seed44_input_labels.bin",
+      "passed": true
+    },
+    {
+      "name": "seed44_input_schedule.bin",
+      "passed": true
+    },
+    {
+      "name": "seed44_input_train_indices.bin",
+      "passed": true
+    },
+    {
+      "name": "seed44_input_val_indices.bin",
+      "passed": true
+    },
+    {
+      "name": "seed44_all_epoch_permutations_and_flips",
+      "passed": true
+    },
+    {
+      "name": "seed44_retained_schedule_hash",
+      "passed": true
+    },
+    {
+      "name": "seed44_25_epochs_and_same_adapted_history",
+      "passed": true
+    },
+    {
+      "name": "seed44_every_checkpoint_validation_selected",
+      "passed": true
+    },
+    {
+      "name": "seed44_all_runtime_fields_retained",
+      "passed": true
+    },
+    {
+      "name": "seed44_full_counts_and_checkpoint",
+      "passed": true
+    },
+    {
+      "name": "seed44_throughput",
+      "passed": true
+    },
+    {
+      "name": "seed44_checkpoint_hash_and_validation_accuracy",
+      "passed": true
+    },
+    {
+      "name": "seed44_timing1",
+      "passed": true
+    },
+    {
+      "name": "seed44_timing128",
+      "passed": true
+    },
+    {
+      "name": "seed44_summary_row",
+      "passed": true
+    },
+    {
+      "name": "seed44_paired_test_membership",
+      "passed": true
+    },
+    {
+      "name": "seed44_paired_counts_and_accuracy",
+      "passed": true
+    },
+    {
+      "name": "seed44_paired_bootstrap_interval",
+      "passed": true
+    },
+    {
+      "name": "seed44_README_paired_table",
+      "passed": true
+    },
+    {
+      "name": "summary_aggregate_key_set",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.best_epoch",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.best_val_accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.checkpoint_bytes",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.epochs",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.evaluation_counts.test",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.evaluation_counts.train",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.evaluation_counts.validation",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.final_evaluation_seconds",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch1.actual_batch_size",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch1.images_per_second",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch1.measured_iterations",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch1.median_ms",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch1.p95_ms",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch1.warmup_iterations",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch128.actual_batch_size",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch128.images_per_second",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch128.measured_iterations",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch128.median_ms",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch128.p95_ms",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.inference.batch128.warmup_iterations",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.parameter_count",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.peak_rss_bytes",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.prediction_seconds.test",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.prediction_seconds.train",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.prediction_seconds.validation",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.prediction_seconds_by_split.test",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.prediction_seconds_by_split.train",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.prediction_seconds_by_split.validation",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.process_cpu_seconds",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.process_system_cpu_seconds",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.process_user_cpu_seconds",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.threads",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.train_limit",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.trainable_parameter_count",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.training_images_per_second",
+      "passed": true
+    },
+    {
+      "name": "aggregate_performance.training_seconds",
+      "passed": true
+    },
+    {
+      "name": "aggregate_selected_epoch",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.average_precision_macro",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.balanced_accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.brier_score",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.confidence_correct",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.confidence_incorrect",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.ece",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.macro_f1",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.macro_precision",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.macro_recall",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.mce",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.mean_confidence",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.multiclass_roc_auc_ovr_macro",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.negative_log_likelihood",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.num_classes",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.num_examples",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.top3_accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.top5_accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_test.weighted_f1",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.average_precision_macro",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.balanced_accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.brier_score",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.confidence_correct",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.confidence_incorrect",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.ece",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.macro_f1",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.macro_precision",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.macro_recall",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.mce",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.mean_confidence",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.multiclass_roc_auc_ovr_macro",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.negative_log_likelihood",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.num_classes",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.num_examples",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.top3_accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.top5_accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_train.weighted_f1",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.average_precision_macro",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.balanced_accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.brier_score",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.confidence_correct",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.confidence_incorrect",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.ece",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.macro_f1",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.macro_precision",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.macro_recall",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.mce",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.mean_confidence",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.multiclass_roc_auc_ovr_macro",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.negative_log_likelihood",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.num_classes",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.num_examples",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.top3_accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.top5_accuracy",
+      "passed": true
+    },
+    {
+      "name": "aggregate_validation.weighted_f1",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_accuracy",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_balanced_accuracy",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_macro_precision",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_macro_recall",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_macro_f1",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_weighted_f1",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_top3_accuracy",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_top5_accuracy",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_negative_log_likelihood",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_brier_score",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_ece",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_mce",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_mean_confidence",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_confidence_correct",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_confidence_incorrect",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_multiclass_roc_auc_ovr_macro",
+      "passed": true
+    },
+    {
+      "name": "comparison_metric_average_precision_macro",
+      "passed": true
+    },
+    {
+      "name": "comparison_performance_training_seconds",
+      "passed": true
+    },
+    {
+      "name": "comparison_performance_training_images_per_second",
+      "passed": true
+    },
+    {
+      "name": "comparison_performance_peak_rss_bytes",
+      "passed": true
+    },
+    {
+      "name": "comparison_performance_inference.batch1.median_ms",
+      "passed": true
+    },
+    {
+      "name": "comparison_performance_inference.batch128.median_ms",
+      "passed": true
+    },
+    {
+      "name": "paired_seed_summary",
+      "passed": true
+    },
+    {
+      "name": "checksum_covers_all_retained_files",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_README.md",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_audit.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_cnn-assembly",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_comparison.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_figures/accuracy_seed_comparison.png",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_figures/confusion_matrix.png",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_figures/learning_curves.png",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_figures/per_class_f1.png",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_figures/reliability.png",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_manifest.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_numerical-parity.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/labels.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/manifest.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/seed-42/init.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/seed-42/inputs.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/seed-42/schedule.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/seed-43/init.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/seed-43/inputs.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/seed-43/schedule.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/seed-44/init.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/seed-44/inputs.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/seed-44/schedule.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/train_indices.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_prepared/val_indices.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_report.md",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_run_manifest.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_runtime-parity.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_runtime-safety.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/history.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/metrics.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/performance.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/predictions_test.npz",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/predictions_train.npz",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/predictions_validation.npz",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/raw/best.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/raw/console.log",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/raw/history.csv",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/raw/last.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/raw/manifest.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/raw/performance.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/raw/predictions_test.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/raw/predictions_train.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/raw/predictions_validation.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/raw/timing_batch1.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-42/raw/timing_batch128.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/history.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/metrics.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/performance.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/predictions_test.npz",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/predictions_train.npz",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/predictions_validation.npz",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/raw/best.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/raw/console.log",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/raw/history.csv",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/raw/last.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/raw/manifest.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/raw/performance.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/raw/predictions_test.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/raw/predictions_train.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/raw/predictions_validation.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/raw/timing_batch1.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-43/raw/timing_batch128.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/history.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/metrics.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/performance.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/predictions_test.npz",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/predictions_train.npz",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/predictions_validation.npz",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/raw/best.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/raw/console.log",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/raw/history.csv",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/raw/last.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/raw/manifest.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/raw/performance.json",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/raw/predictions_test.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/raw/predictions_train.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/raw/predictions_validation.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/raw/timing_batch1.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_seed-44/raw/timing_batch128.bin",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/ABI.md",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/CONVOLUTION.md",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/MODEL.md",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/Makefile",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/README.md",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/RUNTIME.md",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/collect.py",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/convolution.S",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/model.S",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/prepare.py",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/run_experiment.py",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/runtime.S",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/smoke.py",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/test_runtime_safety.py",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/validate.py",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_source/validate_runtime.py",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_split_indices.npz",
+      "passed": true
+    },
+    {
+      "name": "retained_checksum_summary.json",
+      "passed": true
+    }
+  ],
+  "scope": "Independent source/commit/snapshot/binary/prepared-data provenance, full per-seed schedule and runtime history, summary aggregate recomputation, paired test comparison/bootstrap/table, and every retained file checksum. Full 180000-row metric recomputation is separately audited by root."
+}

@@ -1,0 +1,17 @@
+{
+  "seed": 44,
+  "epochs": 25,
+  "batch_size": 128,
+  "parameters": 5418,
+  "schedule_records": 1125000,
+  "actual_baseline_loader_images_verified_bitwise": 256,
+  "hashes": {
+    "images.bin": "0ac3ab5c78edb36ac68f69e287fd8f957b2d4f820b80e5fa9bd05c810fc0d95d",
+    "init.bin": "62005c2a327c4a600842e868acfc65891cb9fce0b30c807b76ea84f72fa9c64a",
+    "labels.bin": "6eeb9b3104a818f66b3145e87605514707402965b184bda28e887aa61fb9b487",
+    "schedule.bin": "441af92ea17aa23b4a7d1e33fcead933500a4a2e88ce96b34af51954e87fe186",
+    "train_indices.bin": "33287464d15c4eb7fbd7ebdae5fc87fded7c9d1d942173976f597e73f97e3eff",
+    "val_indices.bin": "75d8231c36d70e44d641dba8111f48c1be6d63ad2291fa15e867fd153d86c8a4"
+  },
+  "rng_note": "Model initialization and actual DataLoader generator order; one global Torch random draw per flip. Training has no other stochastic operations."
+}

@@ -1,0 +1,89 @@
+epoch 1/2 train_loss=2.307843 train_accuracy=0.112840 val_loss=2.314797 val_accuracy=0.046512 epoch_seconds=0.025
+epoch 2/2 train_loss=2.308490 train_accuracy=0.097276 val_loss=2.312570 val_accuracy=0.054264 epoch_seconds=0.025
+Assembly training, selected-checkpoint evaluation, and timing complete.
+{
+  "status": "passed",
+  "binary_sha256": "fdcb34d39d2f2b1fb84b8c1e56df01afe7148c0a430ae2eddf7e3b3acdfc88e7",
+  "checks": [
+    {
+      "name": "epoch1.train_loss",
+      "max_absolute_error": 2.217194339237949e-07,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch1.train_accuracy",
+      "max_absolute_error": 7.004119506603956e-14,
+      "atol": 1e-10,
+      "rtol": 0
+    },
+    {
+      "name": "epoch1.val_loss",
+      "max_absolute_error": 1.108509639635713e-08,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch1.val_accuracy",
+      "max_absolute_error": 2.325917236589703e-14,
+      "atol": 1e-10,
+      "rtol": 0
+    },
+    {
+      "name": "epoch2.train_loss",
+      "max_absolute_error": 3.7067060532081086e-09,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch2.train_accuracy",
+      "max_absolute_error": 3.9690473130349346e-14,
+      "atol": 1e-10,
+      "rtol": 0
+    },
+    {
+      "name": "epoch2.val_loss",
+      "max_absolute_error": 7.395382084496305e-09,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch2.val_accuracy",
+      "max_absolute_error": 2.7131075164277263e-14,
+      "atol": 1e-10,
+      "rtol": 0
+    },
+    {
+      "name": "last_parameters",
+      "max_absolute_error": 2.60770320892334e-06,
+      "atol": 3e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "best_parameters",
+      "max_absolute_error": 2.60770320892334e-06,
+      "atol": 3e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "train.probabilities",
+      "max_absolute_error": 2.9802322387695312e-08,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "validation.probabilities",
+      "max_absolute_error": 2.9802322387695312e-08,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "test.probabilities",
+      "max_absolute_error": 2.9802322387695312e-08,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    }
+  ],
+  "best_epoch": 2,
+  "scope": "Two epochs, 257 training records per epoch (128+128+1), 129 evaluation records per split, fixed initialization/schedule. Verifies exact accuracy and selected checkpoint plus tolerance-based losses, weights, predictions; 100 finite timing samples each."
+}

@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "source_revision": "ba36c840759c9bf32db3827bb40180107d97d7db",
+  "prepared_files_verified_by_sha256": 18,
+  "prediction_rows_verified": 180000,
+  "unique_test_examples": 10000,
+  "checkpoint_replay_images": 384,
+  "results": [
+    {
+      "seed": 42,
+      "selected_epoch": 25,
+      "test_accuracy": 0.5208,
+      "checkpoint_replay": {
+        "status": "passed",
+        "images": 128,
+        "split": "first 128 sorted training indices",
+        "operation": "PyTorch inference from saved assembly checkpoint; no fitting",
+        "atol": 3e-05,
+        "rtol": 0.0001,
+        "max_absolute_probability_error": 1.4901161193847656e-06,
+        "max_tolerance_ratio": 0.019978981150004245,
+        "predicted_class_disagreements": 0
+      }
+    },
+    {
+      "seed": 43,
+      "selected_epoch": 25,
+      "test_accuracy": 0.5132,
+      "checkpoint_replay": {
+        "status": "passed",
+        "images": 128,
+        "split": "first 128 sorted training indices",
+        "operation": "PyTorch inference from saved assembly checkpoint; no fitting",
+        "atol": 3e-05,
+        "rtol": 0.0001,
+        "max_absolute_probability_error": 8.940696716308594e-07,
+        "max_tolerance_ratio": 0.014315730119128824,
+        "predicted_class_disagreements": 0
+      }
+    },
+    {
+      "seed": 44,
+      "selected_epoch": 25,
+      "test_accuracy": 0.5257,
+      "checkpoint_replay": {
+        "status": "passed",
+        "images": 128,
+        "split": "first 128 sorted training indices",
+        "operation": "PyTorch inference from saved assembly checkpoint; no fitting",
+        "atol": 3e-05,
+        "rtol": 0.0001,
+        "max_absolute_probability_error": 9.5367431640625e-07,
+        "max_tolerance_ratio": 0.01647471937082183,
+        "predicted_class_disagreements": 0
+      }
+    }
+  ],
+  "checks": [
+    "fixed source/executable hashes and three complete seed records",
+    "exact dataset and split fingerprints against retained Mac baseline",
+    "exact seed initializations and 25 valid permutations/flip schedules",
+    "25 full epochs, 45000 training examples, two workers, 5418 parameters",
+    "validation-only checkpoint selection at every epoch",
+    "finite normalized predictions for all 180000 rows",
+    "independent PyTorch checkpoint replay, inference only",
+    "validation metrics agree with selected history checkpoint"
+  ]
+}

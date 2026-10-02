@@ -1,0 +1,527 @@
+{
+  "binary": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+  "binary_sha256": "fdcb34d39d2f2b1fb84b8c1e56df01afe7148c0a430ae2eddf7e3b3acdfc88e7",
+  "check_count": 22,
+  "checks": [
+    {
+      "after": {
+        "sentinel.bin": "8c7eb07effbf362008425c289a23b6a3736cc64571c3af80eab63221033dd0ab"
+      },
+      "before": {
+        "sentinel.bin": "8c7eb07effbf362008425c289a23b6a3736cc64571c3af80eab63221033dd0ab"
+      },
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-smoke-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/nonempty-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit and all existing file bytes retained",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-nonempty-output.log",
+      "log_sha256": "4ec91e8376134889690870edb7a994ec43d63af82c97c97c94c8b88ec5f9a1fa",
+      "name": "reject-nonempty-output",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/nonempty-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-init-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-init-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-init.log",
+      "log_sha256": "cc25b1fd7723437611a9efd77b70fcbac17c53197f35f4a29525de862bf58d48",
+      "malformed_file": "init.bin",
+      "malformed_sha256": "6fd13f4151d552b259472b37c27aebba72846a53cbd7eae04c4025f792edd260",
+      "malformed_size_bytes": 21671,
+      "name": "reject-truncated-init",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-init-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-extra-init-byte-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-extra-init-byte-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-extra-init-byte.log",
+      "log_sha256": "895fa6a98f0025ff5acdbac01e906f6adfdafa53cc1262ff879d5a66b72881cf",
+      "malformed_file": "init.bin",
+      "malformed_sha256": "08ae2b39a94f1b638f13955d255640a6e8882e0e34c4ae4783a0c91b26545263",
+      "malformed_size_bytes": 21673,
+      "name": "reject-extra-init-byte",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-extra-init-byte-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-images-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-images-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-images.log",
+      "log_sha256": "d380677860dd1c36a4c28f2fa73dbe094084b176bdd17dab8082f2d6cb376b7b",
+      "malformed_file": "images.bin",
+      "malformed_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "malformed_size_bytes": 1,
+      "name": "reject-truncated-images",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-images-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-schedule-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-schedule-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-schedule.log",
+      "log_sha256": "55db71a96175e5210a4b4aa1e438a306038a48bc469e5a860d448a559a1262df",
+      "malformed_file": "schedule.bin",
+      "malformed_sha256": "02e7ef76088228366f6a90abbf30be02e1989b484da13af9cab979b06bfc5c68",
+      "malformed_size_bytes": 719999,
+      "name": "reject-truncated-schedule",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-truncated-schedule-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-nan-init-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-nan-init-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-nan-init.log",
+      "log_sha256": "3b052462f65108923bf1296f70836f3a082f44d87d558cae8fdaf9f281df7a9f",
+      "malformed_file": "init.bin",
+      "malformed_sha256": "b51c39f735d0f479b981de6421810be3b290f827657b41e89deae406d97b5260",
+      "malformed_size_bytes": 21672,
+      "name": "reject-nan-init",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-nan-init-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-infinite-init-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-infinite-init-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-infinite-init.log",
+      "log_sha256": "3b052462f65108923bf1296f70836f3a082f44d87d558cae8fdaf9f281df7a9f",
+      "malformed_file": "init.bin",
+      "malformed_sha256": "d02f8dbd05291e2ff5d61fcee7038c9424e87cfaab1328ac63838483a8d95801",
+      "malformed_size_bytes": 21672,
+      "name": "reject-infinite-init",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-infinite-init-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-train-index-out-of-range-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-train-index-out-of-range-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-train-index-out-of-range.log",
+      "log_sha256": "f622942893e99069f9704d6cea8ebb204455540cf722cb50c0861d9180431e0b",
+      "malformed_file": "train_indices.bin",
+      "malformed_sha256": "39e4ea005de252e6d68dba2f55014d3d811c6b2f08979505059850d53f030f9e",
+      "malformed_size_bytes": 180000,
+      "name": "reject-train-index-out-of-range",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-train-index-out-of-range-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-unsorted-train-indices-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-unsorted-train-indices-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-unsorted-train-indices.log",
+      "log_sha256": "f622942893e99069f9704d6cea8ebb204455540cf722cb50c0861d9180431e0b",
+      "malformed_file": "train_indices.bin",
+      "malformed_sha256": "ddfcec0d6dc453de22c543fe8be97092130ac9481afd77e7b4d5af84f4bb787e",
+      "malformed_size_bytes": 180000,
+      "name": "reject-unsorted-train-indices",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-unsorted-train-indices-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-validation-index-out-of-range-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-validation-index-out-of-range-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-validation-index-out-of-range.log",
+      "log_sha256": "f622942893e99069f9704d6cea8ebb204455540cf722cb50c0861d9180431e0b",
+      "malformed_file": "val_indices.bin",
+      "malformed_sha256": "de67815f82c2f77fd2f934d55fc528d0770c7e74dfb80ca44f19e2eb9bb39ee2",
+      "malformed_size_bytes": 20000,
+      "name": "reject-validation-index-out-of-range",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-validation-index-out-of-range-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-schedule-index-out-of-range-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-schedule-index-out-of-range-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-schedule-index-out-of-range.log",
+      "log_sha256": "f622942893e99069f9704d6cea8ebb204455540cf722cb50c0861d9180431e0b",
+      "malformed_file": "schedule.bin",
+      "malformed_sha256": "bd2cc4440b8fa722722fd8a96ba5a91a0d65a2db399a0c3d938f05cd685e0f5e",
+      "malformed_size_bytes": 720000,
+      "name": "reject-schedule-index-out-of-range",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-schedule-index-out-of-range-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-test-image-in-training-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-test-image-in-training-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-test-image-in-training.log",
+      "log_sha256": "f622942893e99069f9704d6cea8ebb204455540cf722cb50c0861d9180431e0b",
+      "malformed_file": "schedule.bin",
+      "malformed_sha256": "6f2ad782d139b3e876285772e6dcb25984aeedba1301d974837c5906fbf5cedb",
+      "malformed_size_bytes": 720000,
+      "name": "reject-test-image-in-training",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-test-image-in-training-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-validation-image-in-training-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-validation-image-in-training-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-validation-image-in-training.log",
+      "log_sha256": "f622942893e99069f9704d6cea8ebb204455540cf722cb50c0861d9180431e0b",
+      "malformed_file": "schedule.bin",
+      "malformed_sha256": "e0e58ffbf5b71b7453e13f570cfdff21f7b87fab54b87d87914ea91ce0dd5767",
+      "malformed_size_bytes": 720000,
+      "name": "reject-validation-image-in-training",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-validation-image-in-training-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-duplicate-schedule-image-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-duplicate-schedule-image-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-duplicate-schedule-image.log",
+      "log_sha256": "f622942893e99069f9704d6cea8ebb204455540cf722cb50c0861d9180431e0b",
+      "malformed_file": "schedule.bin",
+      "malformed_sha256": "653e603a13dd62cbf52b52d45a553ab0ae7a5b1737c3bd7d6d32854355ed575b",
+      "malformed_size_bytes": 720000,
+      "name": "reject-duplicate-schedule-image",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-duplicate-schedule-image-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-invalid-unsampled-schedule-record-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-invalid-unsampled-schedule-record-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-invalid-unsampled-schedule-record.log",
+      "log_sha256": "f622942893e99069f9704d6cea8ebb204455540cf722cb50c0861d9180431e0b",
+      "malformed_file": "schedule.bin",
+      "malformed_sha256": "82e4ab2e16a1c22ca89c0f789d5d3537685a7dcc6dca56d56c59097172250abd",
+      "malformed_size_bytes": 720000,
+      "name": "reject-invalid-unsampled-schedule-record",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-invalid-unsampled-schedule-record-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-overlapping-train-validation-splits-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-overlapping-train-validation-splits-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-overlapping-train-validation-splits.log",
+      "log_sha256": "f622942893e99069f9704d6cea8ebb204455540cf722cb50c0861d9180431e0b",
+      "malformed_file": "val_indices.bin",
+      "malformed_sha256": "4871b37e89c03503026ceb268ee20edc5d09c33d6acbcc7d7ce159a947045dfa",
+      "malformed_size_bytes": 20000,
+      "name": "reject-overlapping-train-validation-splits",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-overlapping-train-validation-splits-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-flip-out-of-range-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-flip-out-of-range-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-flip-out-of-range.log",
+      "log_sha256": "f622942893e99069f9704d6cea8ebb204455540cf722cb50c0861d9180431e0b",
+      "malformed_file": "schedule.bin",
+      "malformed_sha256": "97ca5d1b73ce432263261cae3d3d3492fc73e06acfc6966d56103223e1c7ea6e",
+      "malformed_size_bytes": 720000,
+      "name": "reject-flip-out-of-range",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-flip-out-of-range-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-label-out-of-range-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-label-out-of-range-output",
+        "2",
+        "257"
+      ],
+      "exit_code": 1,
+      "expected": "nonzero exit status",
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-label-out-of-range.log",
+      "log_sha256": "f622942893e99069f9704d6cea8ebb204455540cf722cb50c0861d9180431e0b",
+      "malformed_file": "labels.bin",
+      "malformed_sha256": "b0e1e039a1049833fc00fc420e33fbc20c67e968368053fe9eec53721c7568d6",
+      "malformed_size_bytes": 240000,
+      "name": "reject-label-out-of-range",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/reject-label-out-of-range-output",
+      "passed": true
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-smoke-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/repeat-1-output",
+        "2",
+        "257"
+      ],
+      "deterministic_file_sha256": {
+        "best.bin": "869f24da6f426cf89dfdde94fd416c6c18db2d1c7972b812c48322f8606d755b",
+        "last.bin": "869f24da6f426cf89dfdde94fd416c6c18db2d1c7972b812c48322f8606d755b",
+        "predictions_test.bin": "43b5cb3c10102e834a2f8f57da2f7ed2dcea29a27101cc036b8329b86e145bf4",
+        "predictions_train.bin": "6b816d0f2e020b32907d223442c7bb4127a5d354b867ab26461dde83a5a3add2",
+        "predictions_validation.bin": "05ee82f87335b77ad6df2fe057bfb9c2832c200698cba725149634ab7c854d70"
+      },
+      "exit_code": 0,
+      "expected": "successful 2 epoch training and evaluation",
+      "history_without_timings": [
+        {
+          "epoch": "1",
+          "selected_epoch": "1",
+          "train_accuracy": "0.112840466926",
+          "train_loss": "2.30784325006",
+          "val_accuracy": "0.046511627907",
+          "val_loss": "2.31479729054"
+        },
+        {
+          "epoch": "2",
+          "selected_epoch": "2",
+          "train_accuracy": "0.0972762645914",
+          "train_loss": "2.30848950264",
+          "val_accuracy": "0.0542635658915",
+          "val_loss": "2.31257018747"
+        }
+      ],
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/repeat-1.log",
+      "log_sha256": "0d0c6ff8ee12322db795dd388db4d7f24d88d7dda7aee58b62a9481444af68c7",
+      "name": "repeat-1",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/repeat-1-output",
+      "passed": true,
+      "performance": {
+        "best_epoch": 2,
+        "epochs": 2,
+        "evaluation_counts": {
+          "test": 129,
+          "train": 129,
+          "validation": 129
+        },
+        "final_evaluation_seconds": 0.013539458,
+        "floating_point": "float32 model/gradients; float64 reporting sums",
+        "parameter_count": 5418,
+        "peak_rss_bytes": 189693952,
+        "prediction_seconds": {
+          "test": 0.00437875,
+          "train": 0.004320208,
+          "validation": 0.004441583
+        },
+        "process_system_cpu_seconds": 0.017286,
+        "process_user_cpu_seconds": 1.097853,
+        "threads": 2,
+        "timing_scope": "forward only; 20 warmups and 100 samples; batch1 caller and batch128 two persistent workers",
+        "train_limit": 257,
+        "training_seconds": 0.050307375
+      }
+    },
+    {
+      "command": [
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-smoke-inputs",
+        "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/repeat-2-output",
+        "2",
+        "257"
+      ],
+      "deterministic_file_sha256": {
+        "best.bin": "869f24da6f426cf89dfdde94fd416c6c18db2d1c7972b812c48322f8606d755b",
+        "last.bin": "869f24da6f426cf89dfdde94fd416c6c18db2d1c7972b812c48322f8606d755b",
+        "predictions_test.bin": "43b5cb3c10102e834a2f8f57da2f7ed2dcea29a27101cc036b8329b86e145bf4",
+        "predictions_train.bin": "6b816d0f2e020b32907d223442c7bb4127a5d354b867ab26461dde83a5a3add2",
+        "predictions_validation.bin": "05ee82f87335b77ad6df2fe057bfb9c2832c200698cba725149634ab7c854d70"
+      },
+      "exit_code": 0,
+      "expected": "successful 2 epoch training and evaluation",
+      "history_without_timings": [
+        {
+          "epoch": "1",
+          "selected_epoch": "1",
+          "train_accuracy": "0.112840466926",
+          "train_loss": "2.30784325006",
+          "val_accuracy": "0.046511627907",
+          "val_loss": "2.31479729054"
+        },
+        {
+          "epoch": "2",
+          "selected_epoch": "2",
+          "train_accuracy": "0.0972762645914",
+          "train_loss": "2.30848950264",
+          "val_accuracy": "0.0542635658915",
+          "val_loss": "2.31257018747"
+        }
+      ],
+      "log": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/repeat-2.log",
+      "log_sha256": "0d0c6ff8ee12322db795dd388db4d7f24d88d7dda7aee58b62a9481444af68c7",
+      "name": "repeat-2",
+      "output": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1/repeat-2-output",
+      "passed": true,
+      "performance": {
+        "best_epoch": 2,
+        "epochs": 2,
+        "evaluation_counts": {
+          "test": 129,
+          "train": 129,
+          "validation": 129
+        },
+        "final_evaluation_seconds": 0.014066083,
+        "floating_point": "float32 model/gradients; float64 reporting sums",
+        "parameter_count": 5418,
+        "peak_rss_bytes": 189726720,
+        "prediction_seconds": {
+          "test": 0.0046225,
+          "train": 0.00452625,
+          "validation": 0.004533792
+        },
+        "process_system_cpu_seconds": 0.024334,
+        "process_user_cpu_seconds": 1.090304,
+        "threads": 2,
+        "timing_scope": "forward only; 20 warmups and 100 samples; batch1 caller and batch128 two persistent workers",
+        "train_limit": 257,
+        "training_seconds": 0.050477292
+      }
+    },
+    {
+      "compared_files": [
+        "best.bin",
+        "last.bin",
+        "predictions_train.bin",
+        "predictions_validation.bin",
+        "predictions_test.bin"
+      ],
+      "expected": "identical best/last parameters, all predictions, and numerical history",
+      "name": "bitwise-repeatability",
+      "passed": true,
+      "timings_excluded": true
+    },
+    {
+      "after_sha256": {
+        "images.bin": "0ac3ab5c78edb36ac68f69e287fd8f957b2d4f820b80e5fa9bd05c810fc0d95d",
+        "init.bin": "aa3bacc84c3e11893fe53edf30fb26b4af38ba511b8fde33bce5949bddcdbdc9",
+        "labels.bin": "6eeb9b3104a818f66b3145e87605514707402965b184bda28e887aa61fb9b487",
+        "schedule.bin": "cada9e255f924f4b88b6a5904beb0eb8e0e34d0e866168bb306c2845d043de94",
+        "train_indices.bin": "33287464d15c4eb7fbd7ebdae5fc87fded7c9d1d942173976f597e73f97e3eff",
+        "val_indices.bin": "75d8231c36d70e44d641dba8111f48c1be6d63ad2291fa15e867fd153d86c8a4"
+      },
+      "name": "original-inputs-unchanged",
+      "passed": true
+    }
+  ],
+  "command_arguments": [
+    "2",
+    "257"
+  ],
+  "completed_at": "2026-10-02T23:25:12.892295+00:00",
+  "environment": {
+    "CNN_ASM_EVAL_LIMIT": "129"
+  },
+  "input_sha256": {
+    "images.bin": "0ac3ab5c78edb36ac68f69e287fd8f957b2d4f820b80e5fa9bd05c810fc0d95d",
+    "init.bin": "aa3bacc84c3e11893fe53edf30fb26b4af38ba511b8fde33bce5949bddcdbdc9",
+    "labels.bin": "6eeb9b3104a818f66b3145e87605514707402965b184bda28e887aa61fb9b487",
+    "schedule.bin": "cada9e255f924f4b88b6a5904beb0eb8e0e34d0e866168bb306c2845d043de94",
+    "train_indices.bin": "33287464d15c4eb7fbd7ebdae5fc87fded7c9d1d942173976f597e73f97e3eff",
+    "val_indices.bin": "75d8231c36d70e44d641dba8111f48c1be6d63ad2291fa15e867fd153d86c8a4"
+  },
+  "inputs": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-smoke-inputs",
+  "started_at": "2026-10-02T23:25:11.140041+00:00",
+  "status": "passed",
+  "work_directory": "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-safety-v1"
+}

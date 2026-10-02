@@ -1,0 +1,94 @@
+{
+  "seed": 42,
+  "started_at_utc": "2026-10-02T23:28:42.620565+00:00",
+  "completed_at_utc": "2026-10-02T23:30:24.049809+00:00",
+  "source": {
+    "git_revision": "ba36c840759c9bf32db3827bb40180107d97d7db",
+    "working_tree_clean": true,
+    "model_source_sha256": "12f4bb6d92783000e89625408ac2a734892c8eeabe1b4d199aff09c39e77a0b2",
+    "binary_sha256": "fdcb34d39d2f2b1fb84b8c1e56df01afe7148c0a430ae2eddf7e3b3acdfc88e7",
+    "source_hashes": {
+      "assembly/ABI.md": "9a437476cb23188e2329c0295a186c7e5049a63857d20dd9795be7b61c8dc34b",
+      "assembly/CONVOLUTION.md": "6ffdba0b74f087e7097dd13ef7c62fe38099f860a0b944049ffe2896d6220e2e",
+      "assembly/MODEL.md": "d91f9b4fca3c014cd8ee74335672c3e497f3ca605d6bdb240b817e581e40a5cf",
+      "assembly/Makefile": "43e881b964ad32031eae57144201822a6e19747cc693649e2275e33a507dd368",
+      "assembly/README.md": "3e0a480702fa2726f2694917ef09b98193118f449fd473c8823e2ef913d5d18c",
+      "assembly/RUNTIME.md": "1f831064c745f966559e29b6f56dafb422d128db7b320d3dd982255daf6cd0ef",
+      "assembly/collect.py": "a8c5bb83d2f8a53baa1ffc3adad3026f38a90ca7bc711a6bf28a36a047424ab4",
+      "assembly/convolution.S": "cfbb30c928c7c30814418a4d73e05cf44839083f5767382105e7d07ba0dc8731",
+      "assembly/model.S": "308e784016de2e9f45860bcfc4103c49409898b8d240a61cf35cca2b0e761c6d",
+      "assembly/prepare.py": "9d152a7bf5a6d833921d79d57757340ce5f5ff08a697196735c3af41d4c3370a",
+      "assembly/run_experiment.py": "dbb01042bef9e43ce25a7790591f34c4ca27fafdc4bbd2f6e2c574124a764b93",
+      "assembly/runtime.S": "4e1d8a9afd07832f47ba6615b69eeda49af47ad70c7d2b2ea58bd9438d4f776f",
+      "assembly/smoke.py": "f4ba5c264927e6a9d7b1d7bf8db2aafc1ee087ed88491edab89a2071343a5eb7",
+      "assembly/test_runtime_safety.py": "c81ef5060662ee3a7fbf7e05f282efba3f5446f8a2d2cc7f4193d02d4a1d716a",
+      "assembly/validate.py": "b74ad5cca775b32adc5ab687a15c2f51ee9407d86a049c1a2c1b8c0ef282540d",
+      "assembly/validate_runtime.py": "188f277df0452bc83a994b6fa07e707270ee7bfad6cf5df4b806b0f0c6ace70c"
+    },
+    "command": [
+      "assembly/run_experiment.py"
+    ],
+    "compiler": "Apple clang version 17.0.0 (clang-1700.4.4.1)\nTarget: arm64-apple-darwin25.2.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+    "linked_libraries": "assembly/build/cnn-assembly:\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)\n",
+    "undefined_symbols": "___error\n_abort\n_atoi\n_calloc\n_closedir\n_exit\n_fclose\n_ferror\n_fflush\n_fgetc\n_fopen\n_fprintf\n_fputs\n_fread\n_free\n_fwrite\n_getenv\n_getrusage\n_mach_absolute_time\n_mach_timebase_info\n_malloc\n_memcpy\n_memset\n_mkdir\n_opendir\n_printf\n_pthread_cond_broadcast\n_pthread_cond_init\n_pthread_cond_signal\n_pthread_cond_wait\n_pthread_create\n_pthread_join\n_pthread_mutex_init\n_pthread_mutex_lock\n_pthread_mutex_unlock\n_puts\n_readdir\n_strcat\n_strcpy\n_strlen\n"
+  },
+  "environment": {
+    "python": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]",
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "cpu_model": "Apple M4 Max",
+    "logical_cpus": 16,
+    "physical_cpus": 16,
+    "total_memory_bytes": 137438953472,
+    "torch_threads": 2,
+    "torch_interop_threads": 1,
+    "device": "cpu",
+    "packages": {
+      "torch": "2.14.1",
+      "torchvision": "0.29.1",
+      "numpy": "2.5.2",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "Pillow": "12.3.0",
+      "psutil": "7.2.2"
+    },
+    "macos": {
+      "collected_at_utc": "2026-10-02T23:28:42.059307+00:00",
+      "optional_errors": {},
+      "SPHardwareDataType": [
+        {
+          "chip_type": "Apple M4 Max",
+          "machine_model": "Mac16,5",
+          "machine_name": "MacBook Pro",
+          "number_processors": "proc 16:12:4",
+          "physical_memory": "128 GB"
+        }
+      ],
+      "SPDisplaysDataType": [
+        {
+          "sppci_model": "Apple M4 Max",
+          "sppci_cores": "40",
+          "spdisplays_metal": "spdisplays_supported"
+        }
+      ],
+      "power_source": "AC Power"
+    },
+    "numerical_backend": "handwritten Darwin ARM64 assembly; two pthread workers",
+    "python_scope": "Orchestration, fixed input preparation and post-run audit only",
+    "assembly_workers": 2
+  },
+  "command": [
+    "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+    "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-inputs-v1/seed-42",
+    "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-runs-v1/seed-42",
+    "25",
+    "45000"
+  ],
+  "input_hashes": {
+    "images.bin": "0ac3ab5c78edb36ac68f69e287fd8f957b2d4f820b80e5fa9bd05c810fc0d95d",
+    "init.bin": "aa3bacc84c3e11893fe53edf30fb26b4af38ba511b8fde33bce5949bddcdbdc9",
+    "labels.bin": "6eeb9b3104a818f66b3145e87605514707402965b184bda28e887aa61fb9b487",
+    "schedule.bin": "e5b6f536fbc1848cdd940deac62fad525fc8866f972156641a846834247567c8",
+    "train_indices.bin": "33287464d15c4eb7fbd7ebdae5fc87fded7c9d1d942173976f597e73f97e3eff",
+    "val_indices.bin": "75d8231c36d70e44d641dba8111f48c1be6d63ad2291fa15e867fd153d86c8a4"
+  }
+}

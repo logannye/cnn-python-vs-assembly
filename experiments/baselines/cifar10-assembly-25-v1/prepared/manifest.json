@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "baseline_source": {
+    "git_revision": "ec931522316e4c0af783da9425a5797422d4f301",
+    "working_tree_clean": true,
+    "model_source_sha256": "12f4bb6d92783000e89625408ac2a734892c8eeabe1b4d199aff09c39e77a0b2",
+    "command": [
+      "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/src/classifier/benchmark.py",
+      "--data-dir",
+      "data/cifar10",
+      "--output",
+      "results/mac-cpu-25-seed-runs/baseline-seed-42",
+      "--seeds",
+      "42",
+      "--split-seed",
+      "1729",
+      "--epochs",
+      "25",
+      "--batch-size",
+      "128",
+      "--learning-rate",
+      "0.001",
+      "--threads",
+      "2"
+    ],
+    "github_run_url": null
+  },
+  "baseline_data": {
+    "split_indices_sha256": "a983c076ab303696f8edb2b6825082b40f527edf914ad2072e76cc973dadbcf8",
+    "training_images_sha256": "47af8b02cfcfb6cdf3dbbd1969ad7f1b70f4413f6f80f437b020ee4e5bc8304a",
+    "training_labels_sha256": "f5cfe00b0f00968c0cc5ff3b1d2de51b10e33efa277c2986f4e0fa63e58c9f4f",
+    "test_images_sha256": "f9b1e2130bab680db56eb06d886f7f1ad0f1183907ceff4659d1735c890f5b04",
+    "test_labels_sha256": "cbb7365de8ed11f05cc4c3a1e7f78144127c5e851efd83762fb18202461230bb",
+    "index_convention": "train/validation indices address official train set; test indices address official test set"
+  },
+  "protocol": {
+    "dataset": "CIFAR-10",
+    "dataset_source": "https://www.cs.toronto.edu/~kriz/cifar.html",
+    "dataset_citation": "Alex Krizhevsky, Learning Multiple Layers of Features from Tiny Images, 2009",
+    "train_examples": 45000,
+    "validation_examples": 5000,
+    "test_examples": 10000,
+    "split_seed": 1729,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "epochs": 25,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weight_decay": 0,
+    "scheduler": null,
+    "image_size": 32,
+    "normalization_mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "normalization_std": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "augmentation": "RandomHorizontalFlip(p=0.5) training only",
+    "initialization": "PyTorch default, from scratch; no pretrained weights",
+    "checkpoint_selection": "highest validation accuracy; ties use lower validation loss",
+    "test_policy": "Evaluate once after all epochs and checkpoint selection for each seed",
+    "training_curve_scope": "Augmented pre-update minibatch metrics; changing weights",
+    "final_train_scope": "Deterministic unaugmented training split at selected checkpoint",
+    "accuracy_interval": "95% Wilson; one fitted model, iid test examples",
+    "macro_f1_interval": "95% bootstrap; 1000 multinomial draws from confusion counts",
+    "ece_bins": 15,
+    "class_names": [
+      "airplane",
+      "automobile",
+      "bird",
+      "cat",
+      "deer",
+      "dog",
+      "frog",
+      "horse",
+      "ship",
+      "truck"
+    ],
+    "random_uniform_accuracy": 0.1,
+    "majority_class_accuracy": 0.1,
+    "uniform_nll": 2.302585092994046,
+    "uniform_brier_score": 0.9,
+    "deterministic_algorithms": true
+  },
+  "input_format": "ABI.md; little-endian uint8 NHWC images, uint32 labels/indices/schedules, float32 weights",
+  "seeds": {
+    "42": {
+      "seed": 42,
+      "epochs": 25,
+      "batch_size": 128,
+      "parameters": 5418,
+      "schedule_records": 1125000,
+      "actual_baseline_loader_images_verified_bitwise": 256,
+      "hashes": {
+        "images.bin": "0ac3ab5c78edb36ac68f69e287fd8f957b2d4f820b80e5fa9bd05c810fc0d95d",
+        "init.bin": "aa3bacc84c3e11893fe53edf30fb26b4af38ba511b8fde33bce5949bddcdbdc9",
+        "labels.bin": "6eeb9b3104a818f66b3145e87605514707402965b184bda28e887aa61fb9b487",
+        "schedule.bin": "e5b6f536fbc1848cdd940deac62fad525fc8866f972156641a846834247567c8",
+        "train_indices.bin": "33287464d15c4eb7fbd7ebdae5fc87fded7c9d1d942173976f597e73f97e3eff",
+        "val_indices.bin": "75d8231c36d70e44d641dba8111f48c1be6d63ad2291fa15e867fd153d86c8a4"
+      },
+      "rng_note": "Model initialization and actual DataLoader generator order; one global Torch random draw per flip. Training has no other stochastic operations."
+    },
+    "43": {
+      "seed": 43,
+      "epochs": 25,
+      "batch_size": 128,
+      "parameters": 5418,
+      "schedule_records": 1125000,
+      "actual_baseline_loader_images_verified_bitwise": 256,
+      "hashes": {
+        "images.bin": "0ac3ab5c78edb36ac68f69e287fd8f957b2d4f820b80e5fa9bd05c810fc0d95d",
+        "init.bin": "8563eb1f24d7a410127be6466f0c2fc5e1c70a6ded730bffa4a963e67484303d",
+        "labels.bin": "6eeb9b3104a818f66b3145e87605514707402965b184bda28e887aa61fb9b487",
+        "schedule.bin": "76ba31dc9a9004a68055f68d07d5352e7e3c436ab0ca23bf509f2a729a67778d",
+        "train_indices.bin": "33287464d15c4eb7fbd7ebdae5fc87fded7c9d1d942173976f597e73f97e3eff",
+        "val_indices.bin": "75d8231c36d70e44d641dba8111f48c1be6d63ad2291fa15e867fd153d86c8a4"
+      },
+      "rng_note": "Model initialization and actual DataLoader generator order; one global Torch random draw per flip. Training has no other stochastic operations."
+    },
+    "44": {
+      "seed": 44,
+      "epochs": 25,
+      "batch_size": 128,
+      "parameters": 5418,
+      "schedule_records": 1125000,
+      "actual_baseline_loader_images_verified_bitwise": 256,
+      "hashes": {
+        "images.bin": "0ac3ab5c78edb36ac68f69e287fd8f957b2d4f820b80e5fa9bd05c810fc0d95d",
+        "init.bin": "62005c2a327c4a600842e868acfc65891cb9fce0b30c807b76ea84f72fa9c64a",
+        "labels.bin": "6eeb9b3104a818f66b3145e87605514707402965b184bda28e887aa61fb9b487",
+        "schedule.bin": "441af92ea17aa23b4a7d1e33fcead933500a4a2e88ce96b34af51954e87fe186",
+        "train_indices.bin": "33287464d15c4eb7fbd7ebdae5fc87fded7c9d1d942173976f597e73f97e3eff",
+        "val_indices.bin": "75d8231c36d70e44d641dba8111f48c1be6d63ad2291fa15e867fd153d86c8a4"
+      },
+      "rng_note": "Model initialization and actual DataLoader generator order; one global Torch random draw per flip. Training has no other stochastic operations."
+    }
+  }
+}

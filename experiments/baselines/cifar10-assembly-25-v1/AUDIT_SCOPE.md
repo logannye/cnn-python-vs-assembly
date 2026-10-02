@@ -1,0 +1,3 @@
+# Audit and preservation scope
+
+The collection, metric recomputation and independent review audits describe the numerical run artifacts before final presentation and packaging. Their file counts refer to the artifact set each audit examined. Final presentation adds the implementation-comparison figure and README link; preservation adds safety/repeat evidence and audit copies. The final checksums.json covers every retained bundle file except itself. External SHA256SUMS covers the completed archive and the external copy of the primary audit. No fitted parameters or prediction values are modified during preservation.

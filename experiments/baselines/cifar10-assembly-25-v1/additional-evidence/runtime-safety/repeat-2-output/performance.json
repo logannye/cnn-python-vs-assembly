@@ -1,0 +1,16 @@
+{
+  "training_seconds": 0.050477292,
+  "best_epoch": 2,
+  "parameter_count": 5418,
+  "threads": 2,
+  "final_evaluation_seconds": 0.014066083,
+  "prediction_seconds": {"train": 0.004526250, "validation": 0.004533792, "test": 0.004622500},
+  "peak_rss_bytes": 189726720,
+  "process_user_cpu_seconds": 1.090304000,
+  "process_system_cpu_seconds": 0.024334000,
+  "epochs": 2,
+  "train_limit": 257,
+  "evaluation_counts": {"train": 129, "validation": 129, "test": 129},
+  "timing_scope": "forward only; 20 warmups and 100 samples; batch1 caller and batch128 two persistent workers",
+  "floating_point": "float32 model/gradients; float64 reporting sums"
+}

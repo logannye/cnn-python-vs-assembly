@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "source_revision": "ba36c840759c9bf32db3827bb40180107d97d7db",
+  "files_verified_by_sha256": 97,
+  "prediction_rows_verified": 180000,
+  "unique_test_examples": 10000,
+  "checks": [
+    "artifact checksums",
+    "split disjointness and completeness",
+    "label hashes",
+    "prediction indices and probabilities",
+    "confusion matrices",
+    "accuracy",
+    "macro F1",
+    "NLL",
+    "Brier score",
+    "checkpoint hashes",
+    "summary mean"
+  ],
+  "results": [
+    {
+      "seed": 42,
+      "test_accuracy": 0.5208,
+      "test_macro_f1": 0.5184963397502186,
+      "selected_epoch": 25,
+      "training_seconds": 98.817572834
+    },
+    {
+      "seed": 43,
+      "test_accuracy": 0.5132,
+      "test_macro_f1": 0.5053748187217091,
+      "selected_epoch": 25,
+      "training_seconds": 99.60083325
+    },
+    {
+      "seed": 44,
+      "test_accuracy": 0.5257,
+      "test_macro_f1": 0.5182384618783378,
+      "selected_epoch": 25,
+      "training_seconds": 99.932851417
+    }
+  ]
+}
