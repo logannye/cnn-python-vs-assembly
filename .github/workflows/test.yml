@@ -23,7 +23,10 @@ jobs:
           cache: pip
           cache-dependency-path: pyproject.toml
       - name: Install CPU-only PyTorch wheels
-        run: python -m pip install --only-binary=:all: 'torch>=2.6,<3' 'torchvision>=0.21,<1' --index-url https://download.pytorch.org/whl/cpu
+        run: >-
+          python -m pip install --only-binary=:all:
+          'torch>=2.6,<3' 'torchvision>=0.21,<1'
+          --index-url https://download.pytorch.org/whl/cpu
       - name: Install package and test tools
         run: python -m pip install -e '.[dev]'
       - name: Lint
