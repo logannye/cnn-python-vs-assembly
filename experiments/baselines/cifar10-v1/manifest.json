@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-02T22:28:10.684322+00:00",
+  "protocol": {
+    "dataset": "CIFAR-10",
+    "dataset_source": "https://www.cs.toronto.edu/~kriz/cifar.html",
+    "dataset_citation": "Alex Krizhevsky, Learning Multiple Layers of Features from Tiny Images, 2009",
+    "train_examples": 45000,
+    "validation_examples": 5000,
+    "test_examples": 10000,
+    "split_seed": 1729,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "epochs": 10,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weight_decay": 0,
+    "scheduler": null,
+    "image_size": 32,
+    "normalization_mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "normalization_std": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "augmentation": "RandomHorizontalFlip(p=0.5) training only",
+    "initialization": "PyTorch default, from scratch; no pretrained weights",
+    "checkpoint_selection": "highest validation accuracy; ties use lower validation loss",
+    "test_policy": "Evaluate once after all epochs and checkpoint selection for each seed",
+    "training_curve_scope": "Augmented pre-update minibatch metrics; changing weights",
+    "final_train_scope": "Deterministic unaugmented training split at selected checkpoint",
+    "accuracy_interval": "95% Wilson; one fitted model, iid test examples",
+    "macro_f1_interval": "95% bootstrap; 1000 multinomial draws from confusion counts",
+    "ece_bins": 15,
+    "class_names": [
+      "airplane",
+      "automobile",
+      "bird",
+      "cat",
+      "deer",
+      "dog",
+      "frog",
+      "horse",
+      "ship",
+      "truck"
+    ],
+    "random_uniform_accuracy": 0.1,
+    "majority_class_accuracy": 0.1,
+    "uniform_nll": 2.302585092994046,
+    "uniform_brier_score": 0.9,
+    "deterministic_algorithms": true
+  },
+  "source": {
+    "git_revision": "37dbbbc9a31887ea2fd0781df733c05b0e055fec",
+    "working_tree_clean": true,
+    "model_source_sha256": "12f4bb6d92783000e89625408ac2a734892c8eeabe1b4d199aff09c39e77a0b2",
+    "command": [
+      "/opt/hostedtoolcache/Python/3.12.14/x64/bin/cnn-benchmark",
+      "--data-dir",
+      "data/cifar10",
+      "--output",
+      "results/cifar10-baseline",
+      "--seeds",
+      "42",
+      "--split-seed",
+      "1729",
+      "--epochs",
+      "10",
+      "--batch-size",
+      "128",
+      "--learning-rate",
+      "0.001",
+      "--threads",
+      "2"
+    ],
+    "github_run_url": "https://github.com/logannye/simple-cnn/actions/runs/37072562495"
+  },
+  "data": {
+    "split_indices_sha256": "a983c076ab303696f8edb2b6825082b40f527edf914ad2072e76cc973dadbcf8",
+    "training_images_sha256": "47af8b02cfcfb6cdf3dbbd1969ad7f1b70f4413f6f80f437b020ee4e5bc8304a",
+    "training_labels_sha256": "f5cfe00b0f00968c0cc5ff3b1d2de51b10e33efa277c2986f4e0fa63e58c9f4f",
+    "test_images_sha256": "f9b1e2130bab680db56eb06d886f7f1ad0f1183907ceff4659d1735c890f5b04",
+    "test_labels_sha256": "cbb7365de8ed11f05cc4c3a1e7f78144127c5e851efd83762fb18202461230bb",
+    "index_convention": "train/validation indices address official train set; test indices address official test set"
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "logical_cpus": 2,
+    "total_memory_bytes": 8322932736,
+    "torch_threads": 2,
+    "torch_interop_threads": 1,
+    "device": "cpu",
+    "packages": {
+      "torch": "2.14.1+cpu",
+      "torchvision": "0.29.1+cpu",
+      "numpy": "2.5.2",
+      "scikit-learn": "1.9.1",
+      "matplotlib": "3.11.2",
+      "Pillow": "12.3.0",
+      "psutil": "7.2.2"
+    }
+  },
+  "dataset_download_and_loading_seconds": 17.456576713000004,
+  "completed_at_utc": "2026-10-02T22:32:16.352621+00:00",
+  "seed_runs": {
+    "42": {
+      "schema_version": 1,
+      "started_at_utc": "2026-10-02T22:28:10.684322+00:00",
+      "protocol": {
+        "dataset": "CIFAR-10",
+        "dataset_source": "https://www.cs.toronto.edu/~kriz/cifar.html",
+        "dataset_citation": "Alex Krizhevsky, Learning Multiple Layers of Features from Tiny Images, 2009",
+        "train_examples": 45000,
+        "validation_examples": 5000,
+        "test_examples": 10000,
+        "split_seed": 1729,
+        "seeds": [
+          42
+        ],
+        "epochs": 10,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "optimizer": "Adam",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "epsilon": 1e-08,
+        "weight_decay": 0,
+        "scheduler": null,
+        "image_size": 32,
+        "normalization_mean": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "normalization_std": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "augmentation": "RandomHorizontalFlip(p=0.5) training only",
+        "initialization": "PyTorch default, from scratch; no pretrained weights",
+        "checkpoint_selection": "highest validation accuracy; ties use lower validation loss",
+        "test_policy": "Evaluate once after all epochs and checkpoint selection for each seed",
+        "training_curve_scope": "Augmented pre-update minibatch metrics; changing weights",
+        "final_train_scope": "Deterministic unaugmented training split at selected checkpoint",
+        "accuracy_interval": "95% Wilson; one fitted model, iid test examples",
+        "macro_f1_interval": "95% bootstrap; 1000 multinomial draws from confusion counts",
+        "ece_bins": 15,
+        "class_names": [
+          "airplane",
+          "automobile",
+          "bird",
+          "cat",
+          "deer",
+          "dog",
+          "frog",
+          "horse",
+          "ship",
+          "truck"
+        ],
+        "random_uniform_accuracy": 0.1,
+        "majority_class_accuracy": 0.1,
+        "uniform_nll": 2.302585092994046,
+        "uniform_brier_score": 0.9,
+        "deterministic_algorithms": true
+      },
+      "source": {
+        "git_revision": "37dbbbc9a31887ea2fd0781df733c05b0e055fec",
+        "working_tree_clean": true,
+        "model_source_sha256": "12f4bb6d92783000e89625408ac2a734892c8eeabe1b4d199aff09c39e77a0b2",
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.14/x64/bin/cnn-benchmark",
+          "--data-dir",
+          "data/cifar10",
+          "--output",
+          "results/cifar10-baseline",
+          "--seeds",
+          "42",
+          "--split-seed",
+          "1729",
+          "--epochs",
+          "10",
+          "--batch-size",
+          "128",
+          "--learning-rate",
+          "0.001",
+          "--threads",
+          "2"
+        ],
+        "github_run_url": "https://github.com/logannye/simple-cnn/actions/runs/37072562495"
+      },
+      "data": {
+        "split_indices_sha256": "a983c076ab303696f8edb2b6825082b40f527edf914ad2072e76cc973dadbcf8",
+        "training_images_sha256": "47af8b02cfcfb6cdf3dbbd1969ad7f1b70f4413f6f80f437b020ee4e5bc8304a",
+        "training_labels_sha256": "f5cfe00b0f00968c0cc5ff3b1d2de51b10e33efa277c2986f4e0fa63e58c9f4f",
+        "test_images_sha256": "f9b1e2130bab680db56eb06d886f7f1ad0f1183907ceff4659d1735c890f5b04",
+        "test_labels_sha256": "cbb7365de8ed11f05cc4c3a1e7f78144127c5e851efd83762fb18202461230bb",
+        "index_convention": "train/validation indices address official train set; test indices address official test set"
+      },
+      "environment": {
+        "python": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]",
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+        "logical_cpus": 2,
+        "total_memory_bytes": 8322932736,
+        "torch_threads": 2,
+        "torch_interop_threads": 1,
+        "device": "cpu",
+        "packages": {
+          "torch": "2.14.1+cpu",
+          "torchvision": "0.29.1+cpu",
+          "numpy": "2.5.2",
+          "scikit-learn": "1.9.1",
+          "matplotlib": "3.11.2",
+          "Pillow": "12.3.0",
+          "psutil": "7.2.2"
+        }
+      },
+      "dataset_download_and_loading_seconds": 17.456576713000004,
+      "completed_at_utc": "2026-10-02T22:31:00.030621+00:00"
+    },
+    "43": {
+      "schema_version": 1,
+      "started_at_utc": "2026-10-02T22:28:19.330367+00:00",
+      "protocol": {
+        "dataset": "CIFAR-10",
+        "dataset_source": "https://www.cs.toronto.edu/~kriz/cifar.html",
+        "dataset_citation": "Alex Krizhevsky, Learning Multiple Layers of Features from Tiny Images, 2009",
+        "train_examples": 45000,
+        "validation_examples": 5000,
+        "test_examples": 10000,
+        "split_seed": 1729,
+        "seeds": [
+          43
+        ],
+        "epochs": 10,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "optimizer": "Adam",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "epsilon": 1e-08,
+        "weight_decay": 0,
+        "scheduler": null,
+        "image_size": 32,
+        "normalization_mean": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "normalization_std": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "augmentation": "RandomHorizontalFlip(p=0.5) training only",
+        "initialization": "PyTorch default, from scratch; no pretrained weights",
+        "checkpoint_selection": "highest validation accuracy; ties use lower validation loss",
+        "test_policy": "Evaluate once after all epochs and checkpoint selection for each seed",
+        "training_curve_scope": "Augmented pre-update minibatch metrics; changing weights",
+        "final_train_scope": "Deterministic unaugmented training split at selected checkpoint",
+        "accuracy_interval": "95% Wilson; one fitted model, iid test examples",
+        "macro_f1_interval": "95% bootstrap; 1000 multinomial draws from confusion counts",
+        "ece_bins": 15,
+        "class_names": [
+          "airplane",
+          "automobile",
+          "bird",
+          "cat",
+          "deer",
+          "dog",
+          "frog",
+          "horse",
+          "ship",
+          "truck"
+        ],
+        "random_uniform_accuracy": 0.1,
+        "majority_class_accuracy": 0.1,
+        "uniform_nll": 2.302585092994046,
+        "uniform_brier_score": 0.9,
+        "deterministic_algorithms": true
+      },
+      "source": {
+        "git_revision": "37dbbbc9a31887ea2fd0781df733c05b0e055fec",
+        "working_tree_clean": true,
+        "model_source_sha256": "12f4bb6d92783000e89625408ac2a734892c8eeabe1b4d199aff09c39e77a0b2",
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.14/x64/bin/cnn-benchmark",
+          "--data-dir",
+          "data/cifar10",
+          "--output",
+          "results/cifar10-baseline",
+          "--seeds",
+          "43",
+          "--split-seed",
+          "1729",
+          "--epochs",
+          "10",
+          "--batch-size",
+          "128",
+          "--learning-rate",
+          "0.001",
+          "--threads",
+          "2"
+        ],
+        "github_run_url": "https://github.com/logannye/simple-cnn/actions/runs/37072562495"
+      },
+      "data": {
+        "split_indices_sha256": "a983c076ab303696f8edb2b6825082b40f527edf914ad2072e76cc973dadbcf8",
+        "training_images_sha256": "47af8b02cfcfb6cdf3dbbd1969ad7f1b70f4413f6f80f437b020ee4e5bc8304a",
+        "training_labels_sha256": "f5cfe00b0f00968c0cc5ff3b1d2de51b10e33efa277c2986f4e0fa63e58c9f4f",
+        "test_images_sha256": "f9b1e2130bab680db56eb06d886f7f1ad0f1183907ceff4659d1735c890f5b04",
+        "test_labels_sha256": "cbb7365de8ed11f05cc4c3a1e7f78144127c5e851efd83762fb18202461230bb",
+        "index_convention": "train/validation indices address official train set; test indices address official test set"
+      },
+      "environment": {
+        "python": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]",
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+        "logical_cpus": 2,
+        "total_memory_bytes": 8323969024,
+        "torch_threads": 2,
+        "torch_interop_threads": 1,
+        "device": "cpu",
+        "packages": {
+          "torch": "2.14.1+cpu",
+          "torchvision": "0.29.1+cpu",
+          "numpy": "2.5.2",
+          "scikit-learn": "1.9.1",
+          "matplotlib": "3.11.2",
+          "Pillow": "12.3.0",
+          "psutil": "7.2.2"
+        }
+      },
+      "dataset_download_and_loading_seconds": 15.976974319000007,
+      "completed_at_utc": "2026-10-02T22:32:16.352621+00:00"
+    },
+    "44": {
+      "schema_version": 1,
+      "started_at_utc": "2026-10-02T22:28:11.763756+00:00",
+      "protocol": {
+        "dataset": "CIFAR-10",
+        "dataset_source": "https://www.cs.toronto.edu/~kriz/cifar.html",
+        "dataset_citation": "Alex Krizhevsky, Learning Multiple Layers of Features from Tiny Images, 2009",
+        "train_examples": 45000,
+        "validation_examples": 5000,
+        "test_examples": 10000,
+        "split_seed": 1729,
+        "seeds": [
+          44
+        ],
+        "epochs": 10,
+        "batch_size": 128,
+        "learning_rate": 0.001,
+        "optimizer": "Adam",
+        "betas": [
+          0.9,
+          0.999
+        ],
+        "epsilon": 1e-08,
+        "weight_decay": 0,
+        "scheduler": null,
+        "image_size": 32,
+        "normalization_mean": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "normalization_std": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "augmentation": "RandomHorizontalFlip(p=0.5) training only",
+        "initialization": "PyTorch default, from scratch; no pretrained weights",
+        "checkpoint_selection": "highest validation accuracy; ties use lower validation loss",
+        "test_policy": "Evaluate once after all epochs and checkpoint selection for each seed",
+        "training_curve_scope": "Augmented pre-update minibatch metrics; changing weights",
+        "final_train_scope": "Deterministic unaugmented training split at selected checkpoint",
+        "accuracy_interval": "95% Wilson; one fitted model, iid test examples",
+        "macro_f1_interval": "95% bootstrap; 1000 multinomial draws from confusion counts",
+        "ece_bins": 15,
+        "class_names": [
+          "airplane",
+          "automobile",
+          "bird",
+          "cat",
+          "deer",
+          "dog",
+          "frog",
+          "horse",
+          "ship",
+          "truck"
+        ],
+        "random_uniform_accuracy": 0.1,
+        "majority_class_accuracy": 0.1,
+        "uniform_nll": 2.302585092994046,
+        "uniform_brier_score": 0.9,
+        "deterministic_algorithms": true
+      },
+      "source": {
+        "git_revision": "37dbbbc9a31887ea2fd0781df733c05b0e055fec",
+        "working_tree_clean": true,
+        "model_source_sha256": "12f4bb6d92783000e89625408ac2a734892c8eeabe1b4d199aff09c39e77a0b2",
+        "command": [
+          "/opt/hostedtoolcache/Python/3.12.14/x64/bin/cnn-benchmark",
+          "--data-dir",
+          "data/cifar10",
+          "--output",
+          "results/cifar10-baseline",
+          "--seeds",
+          "44",
+          "--split-seed",
+          "1729",
+          "--epochs",
+          "10",
+          "--batch-size",
+          "128",
+          "--learning-rate",
+          "0.001",
+          "--threads",
+          "2"
+        ],
+        "github_run_url": "https://github.com/logannye/simple-cnn/actions/runs/37072562495"
+      },
+      "data": {
+        "split_indices_sha256": "a983c076ab303696f8edb2b6825082b40f527edf914ad2072e76cc973dadbcf8",
+        "training_images_sha256": "47af8b02cfcfb6cdf3dbbd1969ad7f1b70f4413f6f80f437b020ee4e5bc8304a",
+        "training_labels_sha256": "f5cfe00b0f00968c0cc5ff3b1d2de51b10e33efa277c2986f4e0fa63e58c9f4f",
+        "test_images_sha256": "f9b1e2130bab680db56eb06d886f7f1ad0f1183907ceff4659d1735c890f5b04",
+        "test_labels_sha256": "cbb7365de8ed11f05cc4c3a1e7f78144127c5e851efd83762fb18202461230bb",
+        "index_convention": "train/validation indices address official train set; test indices address official test set"
+      },
+      "environment": {
+        "python": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]",
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+        "logical_cpus": 2,
+        "total_memory_bytes": 8323964928,
+        "torch_threads": 2,
+        "torch_interop_threads": 1,
+        "device": "cpu",
+        "packages": {
+          "torch": "2.14.1+cpu",
+          "torchvision": "0.29.1+cpu",
+          "numpy": "2.5.2",
+          "scikit-learn": "1.9.1",
+          "matplotlib": "3.11.2",
+          "Pillow": "12.3.0",
+          "psutil": "7.2.2"
+        }
+      },
+      "dataset_download_and_loading_seconds": 17.896605432,
+      "completed_at_utc": "2026-10-02T22:31:17.869816+00:00"
+    }
+  },
+  "environment_note": "Root environment is seed 42; see seed_runs for each runner."
+}

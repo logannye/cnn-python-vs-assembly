@@ -175,6 +175,12 @@ calibration, uncertainty intervals, and CPU timing/memory measurements.
 See [the prespecified experiment protocol](experiments/PROTOCOL.md) for settings,
 reproduction commands, metric definitions, and comparison limits.
 
+The [retained baseline results](experiments/baselines/cifar10-v1/README.md)
+achieved **46.36% mean test accuracy** across three seeds after 10 epochs
+(0.26 percentage-point sample standard deviation). The
+[baseline release](https://github.com/logannye/simple-cnn/releases/tag/baseline-cifar10-v1)
+preserves all checkpoints, predictions, split indices, and measurements.
+
 For the underlying library conventions, see PyTorch's
 [model saving and loading guide](https://docs.pytorch.org/tutorials/beginner/basics/saveloadrun_tutorial.html)
 and torchvision's [ImageFolder documentation](https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.ImageFolder.html).
