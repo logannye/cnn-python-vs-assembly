@@ -194,3 +194,12 @@ platform; it does not isolate the effect of either change.
 For the underlying library conventions, see PyTorch's
 [model saving and loading guide](https://docs.pytorch.org/tutorials/beginner/basics/saveloadrun_tutorial.html)
 and torchvision's [ImageFolder documentation](https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.ImageFolder.html).
+
+## Handwritten assembly reproduction
+
+The [Apple ARM64 implementation](assembly/README.md) reproduces the same CNN,
+backpropagation, Adam and complete training loop in handwritten assembly.
+It uses exact exported initialization, sample order and augmentation choices
+from the 25-epoch Mac baseline, with independent numerical and runtime parity
+checks before training. See the [matched experiment protocol](experiments/ASSEMBLY_PROTOCOL.md)
+for reproduction criteria and performance measurement scopes.
