@@ -62,6 +62,31 @@ _rt_now:
  ldp x29,x30,[sp],#16
  ret
 
+// RUSAGE_SELF snapshot: d0 = total user/system CPU seconds; x0 = peak RSS bytes.
+// macOS timeval stores 64-bit seconds and 32-bit microseconds, padded to 16 bytes.
+_rt_usage:
+ stp x29,x30,[sp,#-16]!
+ mov w0,#0
+ ADDR x1,_rt_rusage
+ bl _getrusage
+ CHECK_ZERO
+ ADDR x10,_rt_rusage
+ ldr x0,[x10]
+ ldr x1,[x10,#16]
+ add x0,x0,x1
+ scvtf d0,x0
+ ldrsw x0,[x10,#8]
+ ldrsw x1,[x10,#24]
+ add x0,x0,x1
+ scvtf d1,x0
+ ADDR x0,Lmillion
+ ldr d2,[x0]
+ fdiv d1,d1,d2
+ fadd d0,d0,d1
+ ldr x0,[x10,#32]
+ ldp x29,x30,[sp],#16
+ ret
+
 // x0 root, x1 basename, x2 destination, both root/name <= 1800/100.
 _rt_path:
  ENTER
@@ -876,6 +901,9 @@ Lvalidate_init:
  fmov d0,#-1.0
  ST d0,_rt_best_accuracy
  mov x19,#1
+ bl _rt_usage
+ ST d0,_rt_training_cpu_start
+ ST x0,_rt_peak_rss_loaded
  bl _rt_now
  ST d0,_rt_training_start
 Lepoch:
@@ -997,6 +1025,11 @@ Lselected:
  LD d1,_rt_training_start
  fsub d0,d0,d1
  ST d0,_rt_training_seconds
+ bl _rt_usage
+ ST x0,_rt_peak_rss_training
+ LD d1,_rt_training_cpu_start
+ fsub d0,d0,d1
+ ST d0,_rt_training_cpu_seconds
  LD x0,_rt_history
  bl _fclose
  CHECK_ZERO
@@ -1163,7 +1196,7 @@ _rt_performance:
  bl _fopen
  cbz x0,Lfilefatal
  mov x20,x0
- sub sp,sp,#128
+ sub sp,sp,#144
  LD d0,_rt_training_seconds
  str d0,[sp]
  LD x0,_rt_best_epoch
@@ -1190,11 +1223,17 @@ _rt_performance:
  str x0,[sp,#96]
  LD x0,_rt_eval_test_count
  str x0,[sp,#104]
+ LD d0,_rt_training_cpu_seconds
+ str d0,[sp,#112]
+ LD x0,_rt_peak_rss_loaded
+ str x0,[sp,#120]
+ LD x0,_rt_peak_rss_training
+ str x0,[sp,#128]
  mov x0,x20
  ADDR x1,Lperformance_format
  bl _fprintf
  tbnz w0,#31,Lfatal
- add sp,sp,#128
+ add sp,sp,#144
  mov x0,x20
  bl _fclose
  CHECK_ZERO
@@ -1244,7 +1283,7 @@ Lcomplete: .asciz "Assembly training, selected-checkpoint evaluation, and timing
 Lhistory_header: .asciz "epoch,train_loss,train_accuracy,val_loss,val_accuracy,train_seconds,val_seconds,epoch_seconds,selected_epoch\n"
 Lhistory_format: .asciz "%lu,%.12g,%.12g,%.12g,%.12g,%.9f,%.9f,%.9f,%lu\n"
 Lprogress: .asciz "epoch %lu/%lu train_loss=%.6f train_accuracy=%.6f val_loss=%.6f val_accuracy=%.6f epoch_seconds=%.3f\n"
-Lperformance_format: .asciz "{\n  \"training_seconds\": %.9f,\n  \"best_epoch\": %lu,\n  \"parameter_count\": 5418,\n  \"threads\": 2,\n  \"final_evaluation_seconds\": %.9f,\n  \"prediction_seconds\": {\"train\": %.9f, \"validation\": %.9f, \"test\": %.9f},\n  \"peak_rss_bytes\": %lu,\n  \"process_user_cpu_seconds\": %.9f,\n  \"process_system_cpu_seconds\": %.9f,\n  \"epochs\": %lu,\n  \"train_limit\": %lu,\n  \"evaluation_counts\": {\"train\": %lu, \"validation\": %lu, \"test\": %lu},\n  \"timing_scope\": \"forward only; 20 warmups and 100 samples; batch1 caller and batch128 two persistent workers\",\n  \"floating_point\": \"float32 model/gradients; float64 reporting sums\"\n}\n"
+Lperformance_format: .asciz "{\n  \"training_seconds\": %.9f,\n  \"best_epoch\": %lu,\n  \"parameter_count\": 5418,\n  \"threads\": 2,\n  \"final_evaluation_seconds\": %.9f,\n  \"prediction_seconds\": {\"train\": %.9f, \"validation\": %.9f, \"test\": %.9f},\n  \"peak_rss_bytes\": %lu,\n  \"process_user_cpu_seconds\": %.9f,\n  \"process_system_cpu_seconds\": %.9f,\n  \"epochs\": %lu,\n  \"train_limit\": %lu,\n  \"evaluation_counts\": {\"train\": %lu, \"validation\": %lu, \"test\": %lu},\n  \"training_cpu_seconds\": %.9f,\n  \"peak_rss_loaded_bytes\": %lu,\n  \"peak_rss_training_bytes\": %lu,\n  \"training_timing_scope\": \"epoch loop including transforms, training, validation, checkpoints and progress; excludes setup and final evaluation\",\n  \"memory_scope\": \"process RSS high-water through loaded/setup, training, or whole process including evaluation/timing; not allocated model memory\",\n  \"timing_scope\": \"forward only; 20 warmups and 100 samples; batch1 caller and batch128 two persistent workers\",\n  \"floating_point\": \"float32 model/gradients; float64 reporting sums\"\n}\n"
 .section __TEXT,__const
 .p2align 3
 Lbillion: .double 1000000000.0
@@ -1284,6 +1323,10 @@ Lmillion: .double 1000000.0
 .comm _rt_epoch_seconds,8,3
 .comm _rt_training_start,8,3
 .comm _rt_training_seconds,8,3
+.comm _rt_training_cpu_start,8,3
+.comm _rt_training_cpu_seconds,8,3
+.comm _rt_peak_rss_loaded,8,3
+.comm _rt_peak_rss_training,8,3
 .comm _rt_final_evaluation_seconds,8,3
 .comm _rt_train_prediction_seconds,8,3
 .comm _rt_val_prediction_seconds,8,3

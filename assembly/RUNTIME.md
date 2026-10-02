@@ -65,14 +65,25 @@ loss and accuracy, separate phase durations, total epoch duration including
 checkpoint copy/write, and the checkpoint epoch selected so far. A progress
 line is printed and flushed once per epoch.
 
-`performance.json` records aggregate training time, selected epoch, final
-selected-checkpoint evaluation time, each split's prediction time, process
-peak resident bytes and user/system CPU seconds, and the actual sample counts.
-macOS `getrusage` reports peak resident size in bytes. Aggregate training time
-includes epoch reporting; setup and final evaluation are excluded. Per-split
-prediction time excludes writing the binary output, while the enclosing final
-evaluation time includes those writes. Process CPU and peak RSS cover the
-whole process, including setup, training, evaluation and timing.
+`performance.json` records aggregate training wall time (`training_seconds`),
+matching user-plus-system CPU time (`training_cpu_seconds`), selected epoch,
+final selected-checkpoint evaluation time, each split's prediction time, and
+the actual sample counts. The training interval includes image transforms,
+training, per-epoch validation, checkpoint writes and epoch reporting; setup
+and final evaluation are excluded. CPU snapshots immediately bracket the wall
+interval, so their scope differs only by the resource/clock sampling overhead.
+Per-split prediction time excludes writing the binary output, while the
+enclosing final evaluation time includes those writes.
+
+macOS `getrusage` reports peak resident size in bytes. `peak_rss_loaded_bytes`
+is sampled after inputs, workspaces and worker setup, immediately before
+training; `peak_rss_training_bytes` is sampled immediately after the epoch
+loop. These are process high-water marks through each boundary, not current
+RSS or allocated model memory, so subtracting them does not isolate training
+memory. `peak_rss_bytes`, `process_user_cpu_seconds` and
+`process_system_cpu_seconds` retain their whole-process scope through setup,
+training, evaluation and inference timing. No GPU or machine-wide power
+measurement is inferred from these counters.
 
 `timing_batch1.bin` and `timing_batch128.bin` contain 100 little-endian float64
 millisecond observations each. Normalization happens before the timed scope;
