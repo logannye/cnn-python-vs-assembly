@@ -114,11 +114,12 @@ def environment() -> dict:
             ),
             cpu_model,
         )
-    return {
+    result = {
         "python": sys.version,
         "platform": platform.platform(),
         "cpu_model": cpu_model,
         "logical_cpus": os.cpu_count(),
+        "physical_cpus": psutil.cpu_count(logical=False),
         "total_memory_bytes": psutil.virtual_memory().total,
         "torch_threads": torch.get_num_threads(),
         "torch_interop_threads": torch.get_num_interop_threads(),
@@ -136,6 +137,75 @@ def environment() -> dict:
             )
         },
     }
+    if sys.platform == "darwin":
+        macos = {"collected_at_utc": datetime.now(UTC).isoformat(), "optional_errors": {}}
+        try:
+            hardware = json.loads(
+                subprocess.check_output(
+                    [
+                        "/usr/sbin/system_profiler",
+                        "SPHardwareDataType",
+                        "SPDisplaysDataType",
+                        "-json",
+                    ],
+                    text=True,
+                    stderr=subprocess.DEVNULL,
+                    timeout=30,
+                )
+            )
+            # Save only these scalar fields: never serial numbers, UUIDs, or displays.
+            allowed = {
+                "SPHardwareDataType": (
+                    "chip_type",
+                    "machine_model",
+                    "machine_name",
+                    "number_processors",
+                    "physical_memory",
+                ),
+                "SPDisplaysDataType": ("sppci_model", "sppci_cores", "spdisplays_metal"),
+            }
+            for category, keys in allowed.items():
+                macos[category] = [
+                    {
+                        key: row[key]
+                        for key in keys
+                        if key in row and isinstance(row[key], (str, int, float, bool))
+                    }
+                    for row in hardware.get(category, [])
+                    if isinstance(row, dict)
+                ]
+            for row in macos["SPHardwareDataType"]:
+                if row.get("chip_type"):
+                    result["cpu_model"] = row["chip_type"]
+                    break
+        except (
+            OSError,
+            subprocess.SubprocessError,
+            ValueError,
+            TypeError,
+            AttributeError,
+        ) as error:
+            macos["optional_errors"]["system_profiler"] = type(error).__name__
+        try:
+            power = subprocess.check_output(
+                ["/usr/bin/pmset", "-g", "batt"],
+                text=True,
+                stderr=subprocess.DEVNULL,
+                timeout=5,
+            )
+            # Retain only the power-source category, never battery IDs or raw output.
+            macos["power_source"] = next(
+                (
+                    source
+                    for source in ("AC Power", "Battery Power", "UPS Power")
+                    if f"Now drawing from '{source}'" in power
+                ),
+                "unknown",
+            )
+        except (OSError, subprocess.SubprocessError) as error:
+            macos["optional_errors"]["power_source"] = type(error).__name__
+        result["macos"] = macos
+    return result
 
 
 def git_output(*args: str) -> str:
