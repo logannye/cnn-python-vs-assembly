@@ -1,0 +1,244 @@
+{
+  "binary_sha256": "1876843e6871d27a2534241d016132ac5d9c20199e1b7f180bc8dc0f299c2c3b",
+  "cooldown_seconds": 15,
+  "environment": {
+    "compiler": "Apple clang version 17.0.0 (clang-1700.4.4.1)\nTarget: arm64-apple-darwin25.2.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin",
+    "cpu": "Apple M4 Max",
+    "cpu_count": 16,
+    "linked_libraries": "assembly/build/cnn-assembly:\n\t/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)",
+    "memory_bytes": 137438953472,
+    "packages": {
+      "matplotlib": "3.11.2",
+      "numpy": "2.5.2",
+      "scikit-learn": "1.9.1",
+      "torch": "2.14.1",
+      "torchvision": "0.29.1"
+    },
+    "platform": "macOS-26.2-arm64-arm-64bit",
+    "python": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]",
+    "undefined_symbols": "___error\n_abort\n_atoi\n_calloc\n_closedir\n_exit\n_fclose\n_ferror\n_fflush\n_fgetc\n_fopen\n_fprintf\n_fputs\n_fread\n_free\n_fwrite\n_getenv\n_getrusage\n_mach_absolute_time\n_mach_timebase_info\n_malloc\n_memcpy\n_memset\n_mkdir\n_opendir\n_printf\n_pthread_cond_broadcast\n_pthread_cond_init\n_pthread_cond_signal\n_pthread_cond_wait\n_pthread_create\n_pthread_join\n_pthread_mutex_init\n_pthread_mutex_lock\n_pthread_mutex_unlock\n_puts\n_readdir\n_strcat\n_strcpy\n_strlen"
+  },
+  "experiment": "cifar10-matched-cpu-25-v1",
+  "initial_conditions": {
+    "load_average": [
+      5.97119140625,
+      3.916015625,
+      4.40966796875
+    ],
+    "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=23068771)\t100%; charged; 0:00 remaining present: true",
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+    "utc": "2026-10-02T23:52:55.452550+00:00"
+  },
+  "input_hashes": {
+    "42": {
+      "images.bin": "0ac3ab5c78edb36ac68f69e287fd8f957b2d4f820b80e5fa9bd05c810fc0d95d",
+      "init.bin": "aa3bacc84c3e11893fe53edf30fb26b4af38ba511b8fde33bce5949bddcdbdc9",
+      "labels.bin": "6eeb9b3104a818f66b3145e87605514707402965b184bda28e887aa61fb9b487",
+      "schedule.bin": "e5b6f536fbc1848cdd940deac62fad525fc8866f972156641a846834247567c8",
+      "train_indices.bin": "33287464d15c4eb7fbd7ebdae5fc87fded7c9d1d942173976f597e73f97e3eff",
+      "val_indices.bin": "75d8231c36d70e44d641dba8111f48c1be6d63ad2291fa15e867fd153d86c8a4"
+    },
+    "43": {
+      "images.bin": "0ac3ab5c78edb36ac68f69e287fd8f957b2d4f820b80e5fa9bd05c810fc0d95d",
+      "init.bin": "8563eb1f24d7a410127be6466f0c2fc5e1c70a6ded730bffa4a963e67484303d",
+      "labels.bin": "6eeb9b3104a818f66b3145e87605514707402965b184bda28e887aa61fb9b487",
+      "schedule.bin": "76ba31dc9a9004a68055f68d07d5352e7e3c436ab0ca23bf509f2a729a67778d",
+      "train_indices.bin": "33287464d15c4eb7fbd7ebdae5fc87fded7c9d1d942173976f597e73f97e3eff",
+      "val_indices.bin": "75d8231c36d70e44d641dba8111f48c1be6d63ad2291fa15e867fd153d86c8a4"
+    },
+    "44": {
+      "images.bin": "0ac3ab5c78edb36ac68f69e287fd8f957b2d4f820b80e5fa9bd05c810fc0d95d",
+      "init.bin": "62005c2a327c4a600842e868acfc65891cb9fce0b30c807b76ea84f72fa9c64a",
+      "labels.bin": "6eeb9b3104a818f66b3145e87605514707402965b184bda28e887aa61fb9b487",
+      "schedule.bin": "441af92ea17aa23b4a7d1e33fcead933500a4a2e88ce96b34af51954e87fe186",
+      "train_indices.bin": "33287464d15c4eb7fbd7ebdae5fc87fded7c9d1d942173976f597e73f97e3eff",
+      "val_indices.bin": "75d8231c36d70e44d641dba8111f48c1be6d63ad2291fa15e867fd153d86c8a4"
+    }
+  },
+  "prepared_manifest_sha256": "d86eb0262d708e21034eb0551dca645eb023d5c7d37c3d1ba934ba318a36b694",
+  "protocol": {
+    "accuracy_interval": "95% Wilson; one fitted model, iid test examples",
+    "augmentation": "RandomHorizontalFlip(p=0.5) training only",
+    "batch_size": 128,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "checkpoint_selection": "highest validation accuracy; ties use lower validation loss",
+    "class_names": [
+      "airplane",
+      "automobile",
+      "bird",
+      "cat",
+      "deer",
+      "dog",
+      "frog",
+      "horse",
+      "ship",
+      "truck"
+    ],
+    "dataset": "CIFAR-10",
+    "dataset_citation": "Alex Krizhevsky, Learning Multiple Layers of Features from Tiny Images, 2009",
+    "dataset_source": "https://www.cs.toronto.edu/~kriz/cifar.html",
+    "deterministic_algorithms": true,
+    "ece_bins": 15,
+    "epochs": 25,
+    "epsilon": 1e-08,
+    "final_train_scope": "Deterministic unaugmented training split at selected checkpoint",
+    "image_size": 32,
+    "initialization": "PyTorch default, from scratch; no pretrained weights",
+    "learning_rate": 0.001,
+    "macro_f1_interval": "95% bootstrap; 1000 multinomial draws from confusion counts",
+    "majority_class_accuracy": 0.1,
+    "normalization_mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "normalization_std": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "optimizer": "Adam",
+    "random_uniform_accuracy": 0.1,
+    "scheduler": null,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "split_seed": 1729,
+    "test_examples": 10000,
+    "test_policy": "Evaluate once after all epochs and checkpoint selection for each seed",
+    "train_examples": 45000,
+    "training_curve_scope": "Augmented pre-update minibatch metrics; changing weights",
+    "uniform_brier_score": 0.9,
+    "uniform_nll": 2.302585092994046,
+    "validation_examples": 5000,
+    "weight_decay": 0
+  },
+  "runs": [
+    {
+      "id": "seed-42-repeat-1-python",
+      "implementation": "python",
+      "order": 1,
+      "repeat": 1,
+      "seed": 42
+    },
+    {
+      "id": "seed-42-repeat-1-assembly",
+      "implementation": "assembly",
+      "order": 2,
+      "repeat": 1,
+      "seed": 42
+    },
+    {
+      "id": "seed-42-repeat-2-assembly",
+      "implementation": "assembly",
+      "order": 3,
+      "repeat": 2,
+      "seed": 42
+    },
+    {
+      "id": "seed-42-repeat-2-python",
+      "implementation": "python",
+      "order": 4,
+      "repeat": 2,
+      "seed": 42
+    },
+    {
+      "id": "seed-43-repeat-1-assembly",
+      "implementation": "assembly",
+      "order": 5,
+      "repeat": 1,
+      "seed": 43
+    },
+    {
+      "id": "seed-43-repeat-1-python",
+      "implementation": "python",
+      "order": 6,
+      "repeat": 1,
+      "seed": 43
+    },
+    {
+      "id": "seed-43-repeat-2-python",
+      "implementation": "python",
+      "order": 7,
+      "repeat": 2,
+      "seed": 43
+    },
+    {
+      "id": "seed-43-repeat-2-assembly",
+      "implementation": "assembly",
+      "order": 8,
+      "repeat": 2,
+      "seed": 43
+    },
+    {
+      "id": "seed-44-repeat-1-python",
+      "implementation": "python",
+      "order": 9,
+      "repeat": 1,
+      "seed": 44
+    },
+    {
+      "id": "seed-44-repeat-1-assembly",
+      "implementation": "assembly",
+      "order": 10,
+      "repeat": 1,
+      "seed": 44
+    },
+    {
+      "id": "seed-44-repeat-2-assembly",
+      "implementation": "assembly",
+      "order": 11,
+      "repeat": 2,
+      "seed": 44
+    },
+    {
+      "id": "seed-44-repeat-2-python",
+      "implementation": "python",
+      "order": 12,
+      "repeat": 2,
+      "seed": 44
+    }
+  ],
+  "schema_version": 1,
+  "source_hashes": {
+    "assembly/ABI.md": "9a437476cb23188e2329c0295a186c7e5049a63857d20dd9795be7b61c8dc34b",
+    "assembly/CONVOLUTION.md": "6ffdba0b74f087e7097dd13ef7c62fe38099f860a0b944049ffe2896d6220e2e",
+    "assembly/MODEL.md": "d91f9b4fca3c014cd8ee74335672c3e497f3ca605d6bdb240b817e581e40a5cf",
+    "assembly/Makefile": "43e881b964ad32031eae57144201822a6e19747cc693649e2275e33a507dd368",
+    "assembly/README.md": "3e0a480702fa2726f2694917ef09b98193118f449fd473c8823e2ef913d5d18c",
+    "assembly/RUNTIME.md": "a273e8c784d6e4afd16653c3a9c3eb7e7ed8cd7860fa1c08dc9b2d26d463499d",
+    "assembly/collect.py": "a8c5bb83d2f8a53baa1ffc3adad3026f38a90ca7bc711a6bf28a36a047424ab4",
+    "assembly/convolution.S": "cfbb30c928c7c30814418a4d73e05cf44839083f5767382105e7d07ba0dc8731",
+    "assembly/model.S": "308e784016de2e9f45860bcfc4103c49409898b8d240a61cf35cca2b0e761c6d",
+    "assembly/prepare.py": "9d152a7bf5a6d833921d79d57757340ce5f5ff08a697196735c3af41d4c3370a",
+    "assembly/run_experiment.py": "dbb01042bef9e43ce25a7790591f34c4ca27fafdc4bbd2f6e2c574124a764b93",
+    "assembly/runtime.S": "b8b64300ff23c2f6b403e4f4563a0db8ce5765b89ea30060f9efd5cff1cd4b30",
+    "assembly/smoke.py": "f4ba5c264927e6a9d7b1d7bf8db2aafc1ee087ed88491edab89a2071343a5eb7",
+    "assembly/test_runtime_safety.py": "c81ef5060662ee3a7fbf7e05f282efba3f5446f8a2d2cc7f4193d02d4a1d716a",
+    "assembly/validate.py": "b74ad5cca775b32adc5ab687a15c2f51ee9407d86a049c1a2c1b8c0ef282540d",
+    "assembly/validate_runtime.py": "188f277df0452bc83a994b6fa07e707270ee7bfad6cf5df4b806b0f0c6ace70c",
+    "comparison/PROTOCOL.md": "94f1c0d53f37f1d1c95abcb6dc7fd87e365b163beddd28da59b8e36d5590b326",
+    "comparison/PYTHON_RUNTIME.md": "a8fb398991c7e8ffd6f514d450a25f45a24a4568a4c95cc18c80060ad51a21d1",
+    "comparison/python_train.py": "175fb2d774869205a5a1cea3102409a9f4e95b4494231a504bf9a34429932359",
+    "comparison/report.py": "2154c1f227964d6db67c7e7c629437411f5a29a9b37f62a8d3ec023f5958dd96",
+    "comparison/run.py": "b35036d84b2a586f4d730a621ba76551fc8f9181f1ac5883c991665950717590",
+    "comparison/validate.py": "eee2f8aed5a1d5c95e7d9f1c6792de216b38afd815cfbaeaecd65ca46062815c",
+    "src/classifier/__init__.py": "487b99a518d729698ac657526fa79f33b55406c9af74f47e8480cbc784679690",
+    "src/classifier/benchmark.py": "4455f76ce8fe7dca6d177c9f1be994839538a70ba92074e85fa1496d80798c82",
+    "src/classifier/checkpoint.py": "9e9d1dbe3d4d0ee022ab7ac5927f1724d93c55d47edc5a2d6e4c4441980fd9da",
+    "src/classifier/config.py": "fffc94829016ede3023ebb333572df275f8bc986bb9f8053e7e0c71c86894c7c",
+    "src/classifier/data.py": "117dca359c9219317323b10a8ddc7113f6f40cea49eb89fa6ece2e2e7bc12046",
+    "src/classifier/evaluate.py": "7772cba08b7e013d260f028587e7a3e4e19c8650dcddc8a9bc9d8d438070ea9c",
+    "src/classifier/metrics.py": "efd5b1c984e6cc48c91b98fa33c064868650d690ce74f43d361771a2e6460466",
+    "src/classifier/model.py": "12f4bb6d92783000e89625408ac2a734892c8eeabe1b4d199aff09c39e77a0b2",
+    "src/classifier/predict.py": "6799d99ba5b9ca73e18c3e666b0563ab9d9901490046c04d6af8f6700ec4d9c2",
+    "src/classifier/report.py": "72f406114f575950b709578e3ed8c8cace000fa1a4a1e4b1157f0699bb05c06a",
+    "src/classifier/train.py": "0d344662b5e00a11c17ad0bedc14ee3f485ce287b2bce7edb35627dd4b779c60"
+  },
+  "source_revision": "9978cb0929d64b16a97b0d70dd6f83b93d78e075"
+}

@@ -1,215 +1,194 @@
-# Simple CNN
+# CNN: Python vs. Assembly
 
-[![Tests](https://github.com/logannye/simple-cnn/actions/workflows/test.yml/badge.svg)](https://github.com/logannye/simple-cnn/actions/workflows/test.yml)
+[![Python tests](https://github.com/logannye/cnn-python-vs-assembly/actions/workflows/test.yml/badge.svg)](https://github.com/logannye/cnn-python-vs-assembly/actions/workflows/test.yml)
 
-A small, complete image classifier built with Python and PyTorch. Load labeled
-images, train a two-block CNN, evaluate it on a held-out test set, and classify
-new images. The code is organized so you can read the whole workflow without a
-training framework or a notebook.
+**One tiny CNN, implemented twice: Python with PyTorch and handwritten ARM64 assembly.**
+Both learn CIFAR-10 from the same initial weights, images, batch order and augmentation
+choices. The experiment asks what changes in accuracy, training time, inference
+latency and memory when the implementation changes.
 
-## Quick start
+The assembly version computes the convolutions, activations, pooling, loss,
+gradients and Adam updates itself. Its executable calls macOS system routines
+for files, memory, threads and clocks. Python prepares the shared fixtures and
+audits assembly results; it does not train the assembly model.
 
-Use Python 3.11 or newer. CI exercises Python 3.12 on Linux with CPU-only PyTorch.
-From your terminal:
+## Measured comparison
+
+Assembly completed the matched training loop **1.69× faster** (geometric mean of six paired ratios). Mean test accuracy was **51.99% for Python** and **51.99% for assembly**; the assembly-minus-Python mean difference was **-0.0033 percentage points**. This small observed difference does not establish statistical equivalence.
+
+| Measurement | Python / PyTorch | ARM64 assembly |
+|---|---:|---:|
+| Test accuracy (%) | 51.99 ± 0.57 | 51.99 ± 0.63 |
+| Test macro F1 | 0.5141 ± 0.0071 | 0.5140 ± 0.0075 |
+| Training + validation (s) | 171.68 ± 1.02 | 101.34 ± 0.62 |
+| Training CPU time (s) | 257.85 ± 1.65 | 201.18 ± 0.94 |
+| Whole process (s) | 177.15 ± 1.01 | 104.01 ± 0.64 |
+| Forward batch 1, median (ms) | 0.1190 ± 0.0040 | 0.0449 ± 0.0003 |
+| Forward batch 128, median (ms) | 7.061 ± 0.169 | 4.345 ± 0.061 |
+| Peak RSS through training (MiB) | 526.3 ± 1.4 | 187.5 ± 0.0 |
+
+Values are mean ± sample SD across three seeds; timing repeats are averaged within seed. At about 52% test accuracy, this deliberately small network provides a modest, inspectable baseline.
+
+Measured on **one Apple M4 Max MacBook Pro**, CPU float32, two compute threads,
+25 epochs, three seeds and two repeats per seed per implementation: **12 complete
+training runs**. Quality statistics use three seeds. Timing statistics average
+the two repeats within each seed before summarizing the three seed means.
+
+![Training wall time, CPU time and whole-process time](experiments/baselines/cifar10-matched-cpu-25-v1/figures/runtime.png)
+
+![Test accuracy and per-class F1](experiments/baselines/cifar10-matched-cpu-25-v1/figures/quality.png)
+
+PyTorch's convolution and autograd operations execute compiled native kernels.
+These numbers compare **these two implementations on this machine**; they do not
+establish a general speed advantage of assembly over Python. Float32 reduction
+orders differ, so the two implementations reproduce the same mathematical model
+and training recipe without promising identical training trajectories.
+
+## What is held constant?
+
+| Control | Both implementations |
+|---|---|
+| Model | 3→16→32 convolutions, two ReLU/maxpool blocks, global average pool, 32→10 linear; **5,418 trainable parameters** |
+| Images and splits | CIFAR-10, 32×32 RGB; 45,000 training / 5,000 validation / 10,000 test; identical original image IDs |
+| Initialization | Identical float32 parameter files for seeds 42, 43 and 44 |
+| Batch order and augmentation | Identical hashed 25-epoch image/flip streams; 50% horizontal-flip rule |
+| Pixel arithmetic | Float32 `/255`, recorded flip, `−0.5`, `/0.5`; performed inside both training timers |
+| Optimization | Cross-entropy; Adam lr 0.001, betas (0.9, 0.999), epsilon 1e-8; batch 128 including final partial batch |
+| Training and selection | 25 epochs; highest validation accuracy, ties lower validation loss; test after selection |
+| Compute budget | Same Mac CPU, float32, two compute threads, one training process at a time |
+| Timed work | Epoch training + validation + best-checkpoint writes + epoch logging; setup and final evaluation excluded |
+| Repeats | Two per seed, with implementation order reversed; all runs retained |
+
+Kernel implementation, batching, memory layout, reduction order, dispatch and
+runtime overhead are the intended differences. OS scheduling, background load
+and physical temperature cannot be perfectly fixed. We use AC power, a fixed
+15-second pause between processes and recorded power/thermal/load snapshots;
+these controls reduce order effects without proving identical thermal conditions.
+
+The [prespecified protocol](comparison/PROTOCOL.md) defines every timing boundary,
+statistical summary and limitation. The [full report](experiments/baselines/cifar10-matched-cpu-25-v1/README.md)
+links per-run metrics, paired predictions, raw observations and provenance.
+
+## The same network in both implementations
+
+```mermaid
+flowchart LR
+    I["RGB image<br/>3 × 32 × 32"] --> C1["3×3 Conv: 3→16<br/>ReLU + MaxPool 2"]
+    C1 --> C2["3×3 Conv: 16→32<br/>ReLU + MaxPool 2"]
+    C2 --> G["Global average pool<br/>32 features"]
+    G --> L["Linear: 32→10<br/>class logits"]
+    L --> CE["Cross-entropy<br/>backpropagation + Adam"]
+```
+
+```mermaid
+flowchart TB
+    F["Shared, hashed fixtures<br/>pixels · labels · splits · initial weights · epoch schedules"]
+    F --> P["Python training loop<br/>PyTorch native tensor kernels"]
+    F --> A["ARM64 assembly training loop<br/>handwritten numerical kernels"]
+    P --> O["Same output format<br/>checkpoints · histories · probabilities · timings"]
+    A --> O
+    O --> R["Independent audit and reporting<br/>metrics · paired comparisons · charts"]
+```
+
+## Inference, memory and learning
+
+![Forward inference latency at batch sizes 1 and 128](experiments/baselines/cifar10-matched-cpu-25-v1/figures/inference.png)
+
+Inference uses identical pre-normalized test images, 20 warmups and 100 recorded
+forward passes per batch size per run. Percentiles summarize individual runs;
+the chart averages those percentiles across seed means. Transforms, softmax and
+file I/O are outside this microbenchmark.
+
+![Process memory at three measurement boundaries](experiments/baselines/cifar10-matched-cpu-25-v1/figures/memory.png)
+
+Memory is the process's lifetime peak RSS through each boundary, including
+framework/runtime and loaded data. It is not just model memory, and subtracting
+these peaks does not measure isolated phase allocations.
+
+![Validation learning curves](experiments/baselines/cifar10-matched-cpu-25-v1/figures/learning.png)
+
+The report retains accuracy, top-k accuracy, cross-entropy, precision/recall/F1,
+per-class results, confusion matrices, ROC/PR metrics, Brier score, calibration,
+confidence, train/test gaps and uncertainty intervals. Every test prediction,
+checkpoint and per-epoch measurement is retained for later experiments.
+
+## Repository map
+
+| Path | Responsibility |
+|---|---|
+| [`src/classifier/model.py`](src/classifier/model.py) | Small, readable PyTorch definition of the CNN |
+| [`src/classifier/`](src/classifier/) | General image-folder training, evaluation, prediction and metrics |
+| [`assembly/convolution.S`](assembly/convolution.S) | ARM64 convolution forward and backward kernels |
+| [`assembly/model.S`](assembly/model.S) | Activations, pooling, linear layer, loss, gradients and Adam |
+| [`assembly/runtime.S`](assembly/runtime.S) | Native input loading, two-worker training loop, selection, evaluation and timing |
+| [`assembly/prepare.py`](assembly/prepare.py) | Export exact inputs, initial parameters and random-choice schedules |
+| [`comparison/python_train.py`](comparison/python_train.py) | PyTorch loop consuming the same binary fixtures and output contract |
+| [`comparison/run.py`](comparison/run.py) | Frozen run order, provenance gates, power snapshots and sequential child execution |
+| [`comparison/validate.py`](comparison/validate.py) | Matched-input smoke, transform and numerical parity checks |
+| [`comparison/report.py`](comparison/report.py) | Audit completed runs, calculate statistics and generate every comparison chart |
+| [`experiments/baselines/`](experiments/baselines/) | Versioned reports and checksums; historical baselines remain intact |
+| [`tests/`](tests/) | Python unit and workflow tests; native audits are documented separately |
+
+The Python model can reuse autograd and configurable layers. The assembly
+runtime makes every gradient, buffer layout and worker boundary explicit, and
+is specialized to this network shape and the macOS ARM64 ABI. That difference
+in implementation effort and portability is part of the comparison alongside
+runtime performance.
+
+Read the [assembly implementation guide](assembly/README.md),
+[binary ABI](assembly/ABI.md), [native runtime contract](assembly/RUNTIME.md) and
+[matched Python runtime contract](comparison/PYTHON_RUNTIME.md) to follow the
+implementation details.
+
+## Reproduce the comparison
+
+The assembly executable targets **Apple silicon macOS** and requires Xcode
+Command Line Tools. The ordinary Python classifier also works on other platforms.
+Install Python 3.12 and use the recorded versions for the closest reproduction:
 
 ```bash
-git clone https://github.com/logannye/simple-cnn.git
-cd simple-cnn
-python -m venv .venv
+git clone https://github.com/logannye/cnn-python-vs-assembly.git
+cd cnn-python-vs-assembly
+python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -e '.[dev]'
+python -m pip install -e '.[dev,benchmark]'
+export PYTHONPATH=src
+export OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 PYTHONHASHSEED=0
 ```
 
-On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1` instead.
-On Linux, you can install smaller CPU-only PyTorch wheels before the final install:
+See [the reproduction guide](comparison/REPRODUCE.md) for the exact package pins,
+release downloads, input preparation, build, preflight checks, 12-run command
+and chart regeneration. The retained binary fixtures remove dependence on
+regenerating a particular framework's RNG stream. Rebuilt binaries may differ
+because of compiler versions and build IDs; each new experiment records its
+own hashes and gate evidence.
 
-```bash
-python -m pip install 'torch>=2.6,<3' 'torchvision>=0.21,<1' --index-url https://download.pytorch.org/whl/cpu
-```
+For a quick Python-only demonstration or your own image folders, follow the
+[general classifier guide](docs/CLASSIFIER_GUIDE.md).
 
-Create a tiny synthetic dataset, then run the complete workflow:
+## Validation and retained evidence
 
-```bash
-python scripts/make_demo_data.py --output data/demo
-cnn-train --data-dir data/demo --epochs 5 --checkpoint checkpoints/demo.pt
-cnn-evaluate --checkpoint checkpoints/demo.pt --data-dir data/demo/test
-cnn-predict --checkpoint checkpoints/demo.pt --image data/demo/test/red/0000.png
-```
+The assembly math is checked against PyTorch for forward outputs, loss,
+backpropagation, full gradients, Adam and a short training trajectory. A separate
+standalone smoke exercises two epochs with a partial batch. Corrupt-input and
+repeatability tests check the actual executable. The matched Python smoke also
+checks preprocessing bitwise against the per-image reference.
 
-The demo contains red and blue images with random pixel variation. It runs
-without a dataset download and refuses to overwrite a nonempty destination.
-Its accuracy only checks this easy synthetic task; it is not evidence of
-performance on real photographs. No pretrained weights are included.
+For this release, **123 numerical parity checks plus 7 math-domain checks**, **22 native safety/repeatability checks**, **33 matched Python smoke checks** and **33 repository tests** passed. The post-run audit verified all **720,000 retained prediction rows**; all six within-implementation repeat pairs reproduced their numerical outputs exactly. An independent NumPy audit passed **563 checks**. See the [audit evidence](experiments/baselines/cifar10-matched-cpu-25-v1/independent-audit.json) and [summary](experiments/baselines/cifar10-matched-cpu-25-v1/summary.json).
 
-Each command also works as a module: `python -m classifier.train`,
-`python -m classifier.evaluate`, or `python -m classifier.predict`, with the
-same arguments. Use `--help` to see the options.
+Linux GitHub Actions checks Python lint, formatting, tests and the demo workflow.
+The native assembly audits were run locally on the measured ARM64 Mac; the
+Python CI badge does not stand in for those native checks.
 
-## Repository structure
+The [matched experiment release](https://github.com/logannye/cnn-python-vs-assembly/releases/tag/comparison-cifar10-matched-cpu-25-v1)
+contains full results, source snapshots, native executable, exact input fixtures
+and SHA256 manifests. The committed report is a compact, readable mirror.
 
-```text
-simple-cnn/
-├── src/classifier/
-│   ├── config.py       # Validated settings and CPU/GPU selection
-│   ├── data.py         # Image folders, preprocessing, and batches
-│   ├── model.py        # CNN architecture and forward pass
-│   ├── train.py        # Loss, gradient updates, validation, saving
-│   ├── evaluate.py     # Test loss, accuracy, and confusion matrix
-│   ├── predict.py      # Single-image labels and probabilities
-│   └── checkpoint.py   # Restore weights, labels, and preprocessing
-├── scripts/
-│   └── make_demo_data.py
-├── tests/
-├── .github/workflows/test.yml
-├── pyproject.toml
-└── README.md
-```
+Earlier experiments remain available:
 
-`train.py` connects the dataset and model. `evaluate.py` and `predict.py`
-reconstruct the same model from a checkpoint. `checkpoint.py` is the one small
-shared module for loading saved models consistently.
+- [Original 10-epoch CPU baseline](experiments/baselines/cifar10-v1/README.md).
+- [25-epoch Mac CPU DataLoader baseline](experiments/baselines/cifar10-mac-cpu-25-v1/README.md).
+- [First 25-epoch assembly reproduction](experiments/baselines/cifar10-assembly-25-v1/README.md).
 
-## Use your own images
-
-Organize images into three splits, with one subfolder per class:
-
-```text
-data/my-images/
-├── train/
-│   ├── cats/
-│   └── dogs/
-├── val/
-│   ├── cats/
-│   └── dogs/
-└── test/
-    ├── cats/
-    └── dogs/
-```
-
-Put JPEG, PNG, or other Pillow-supported ImageFolder images inside the class
-folders. Use at least two classes. Every split must contain the same class
-names and at least one image in each class folder. Class names and their
-numeric indices come from the alphabetically sorted folder names.
-
-Prepare the splits yourself before training. Keep duplicate images, and images
-of the same subject when applicable, in the same split to avoid leakage.
-Training updates weights; validation selects a checkpoint; test data is used
-only when you explicitly run evaluation.
-
-```bash
-cnn-train --data-dir data/my-images --epochs 20 --batch-size 32 \
-  --image-size 64 --learning-rate 0.001 --checkpoint checkpoints/best.pt
-cnn-evaluate --checkpoint checkpoints/best.pt --data-dir data/my-images/test
-cnn-predict --checkpoint checkpoints/best.pt --image path/to/new-image.jpg
-```
-
-Training resizes RGB images to a square, randomly flips them horizontally, and
-normalizes each channel using mean `0.5` and standard deviation `0.5`. Evaluation
-and prediction use the same resizing and normalization without random flips.
-Grayscale and RGBA images are converted to RGB. If horizontal flips change the
-meaning of your labels, set `augment=False` in the training dataset call in
-`train.py`.
-
-## Model and training
-
-```text
-RGB image [3 × 64 × 64]
-  → Conv2d (3 → 16, 3 × 3) → ReLU → MaxPool2d
-  → Conv2d (16 → 32, 3 × 3) → ReLU → MaxPool2d
-  → Adaptive average pooling → Flatten
-  → Linear (32 → number of classes)
-  → Raw class scores (logits)
-```
-
-The image size is configurable; adaptive pooling keeps the classifier head the
-same size. Cross-entropy loss consumes logits during training. Adam updates the
-weights. Prediction applies softmax to produce one probability per class; these
-probabilities are not calibrated estimates of reliability.
-
-Training prints one JSON record per epoch with training loss, validation loss,
-and validation accuracy. It saves the highest validation accuracy, breaking
-ties using lower validation loss. Evaluation reports sample-weighted loss,
-accuracy between 0 and 1, sample count, class names, and a confusion matrix
-whose rows are actual classes and columns are predicted classes.
-
-The checkpoint includes:
-
-- Model weights and a format version.
-- Class names and their numeric mapping.
-- Image size and normalization statistics.
-- Training configuration, selected epoch, and validation metrics.
-
-Weights are saved on CPU and loaded with `weights_only=True`. Use checkpoints
-from trusted sources. A checkpoint supports evaluation and prediction; it does
-not include optimizer state for resuming training. Reusing a checkpoint path
-replaces that file when the new run saves its first model.
-
-All commands default to CPU. Pass `--device cuda` for an available NVIDIA GPU,
-`--device mps` for an available Apple GPU, or `--device auto` to select an
-available accelerator. Set `--seed` during training for repeatable initialization
-and shuffling; exact results may still differ across hardware and PyTorch versions.
-
-## Development
-
-Install experiment/test dependencies with `python -m pip install -e '.[dev,benchmark]'`.
-
-```bash
-ruff check .
-ruff format --check .
-pytest -q
-```
-
-Tests create tiny temporary datasets. They check image preparation, consistent
-labels, gradients, and the complete train → save → load → evaluate → predict
-path. GitHub Actions also runs the documented command-line workflow on each
-push and pull request. Datasets, generated model weights, and virtual
-environments are excluded from Git.
-
-## Quantitative CIFAR-10 baseline
-
-The optional `cnn-benchmark` command measures the same CNN on the complete
-CIFAR-10 dataset with a fixed validation split and three training seeds.
-It retains predictions, checkpoints, learning curves, per-class metrics,
-calibration, uncertainty intervals, and CPU timing/memory measurements.
-See [the prespecified experiment protocol](experiments/PROTOCOL.md) for settings,
-reproduction commands, metric definitions, and comparison limits.
-
-The [retained baseline results](experiments/baselines/cifar10-v1/README.md)
-achieved **46.36% mean test accuracy** across three seeds after 10 epochs
-(0.26 percentage-point sample standard deviation). The
-[baseline release](https://github.com/logannye/simple-cnn/releases/tag/baseline-cifar10-v1)
-preserves all checkpoints, predictions, split indices, and measurements.
-
-The [25-epoch Mac CPU baseline](experiments/baselines/cifar10-mac-cpu-25-v1/README.md)
-achieved **51.99% mean test accuracy** across the same three seeds
-(0.57 percentage-point sample standard deviation), using two compute threads
-on an Apple M4 Max. Training and validation averaged **217.3 seconds per seed**.
-Its [protocol](experiments/MAC_CPU_25_PROTOCOL.md), full quantitative report,
-and [complete release](https://github.com/logannye/simple-cnn/releases/tag/baseline-cifar10-mac-cpu-25-v1)
-retain the measurements for later experiments. The 5.63 percentage-point
-increase over the original reference changes both epoch budget and computing
-platform; it does not isolate the effect of either change.
-
-For the underlying library conventions, see PyTorch's
-[model saving and loading guide](https://docs.pytorch.org/tutorials/beginner/basics/saveloadrun_tutorial.html)
-and torchvision's [ImageFolder documentation](https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.ImageFolder.html).
-
-## Handwritten assembly reproduction
-
-The [Apple ARM64 implementation](assembly/README.md) reproduces the same CNN,
-backpropagation, Adam and complete training loop in handwritten assembly.
-It uses exact exported initialization, sample order and augmentation choices
-from the 25-epoch Mac baseline, with independent numerical and runtime parity
-checks before training. See the [matched experiment protocol](experiments/ASSEMBLY_PROTOCOL.md)
-for reproduction criteria and performance measurement scopes.
-
-The [retained assembly experiment](experiments/baselines/cifar10-assembly-25-v1/README.md)
-completed all three 25-epoch CPU runs. Mean test accuracy was **51.990%**, compared
-with **51.993%** for PyTorch. Mean measured training/validation time was
-**99.45 seconds versus 217.32 seconds** per seed. Assembly's timer excludes the
-precomputed shuffle/flip schedule; this is a comparison of these implementations,
-not an isolated language effect. The
-[assembly release](https://github.com/logannye/simple-cnn/releases/tag/baseline-cifar10-assembly-25-v1)
-preserves source, executable, initialization, schedules, checkpoints, indexed
-predictions, numerical parity evidence, detailed metrics and paired comparisons.
+Those earlier timings use different data-loading/timing scopes. The matched
+experiment above supersedes their Python/assembly speed ratio.

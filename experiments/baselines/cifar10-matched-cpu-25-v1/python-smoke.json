@@ -1,0 +1,345 @@
+{
+  "status": "passed",
+  "source_sha256": "175fb2d774869205a5a1cea3102409a9f4e95b4494231a504bf9a34429932359",
+  "binary_sha256": "1876843e6871d27a2534241d016132ac5d9c20199e1b7f180bc8dc0f299c2c3b",
+  "reference_source_sha256": "188f277df0452bc83a994b6fa07e707270ee7bfad6cf5df4b806b0f0c6ace70c",
+  "inputs_sha256": {
+    "images.bin": "0ac3ab5c78edb36ac68f69e287fd8f957b2d4f820b80e5fa9bd05c810fc0d95d",
+    "init.bin": "aa3bacc84c3e11893fe53edf30fb26b4af38ba511b8fde33bce5949bddcdbdc9",
+    "labels.bin": "6eeb9b3104a818f66b3145e87605514707402965b184bda28e887aa61fb9b487",
+    "schedule.bin": "cada9e255f924f4b88b6a5904beb0eb8e0e34d0e866168bb306c2845d043de94",
+    "train_indices.bin": "33287464d15c4eb7fbd7ebdae5fc87fded7c9d1d942173976f597e73f97e3eff",
+    "val_indices.bin": "75d8231c36d70e44d641dba8111f48c1be6d63ad2291fa15e867fd153d86c8a4"
+  },
+  "python_outputs_sha256": {
+    "best.bin": "2b01dc8ee9e846e769d0e0df8ede1755627f500d92600c5f9da70498a6bf1736",
+    "last.bin": "2b01dc8ee9e846e769d0e0df8ede1755627f500d92600c5f9da70498a6bf1736",
+    "predictions_train.bin": "1fbbf65a0c150723bf237f4c5ab0238464a3c1522a354a9e968baf52ad42c3be",
+    "predictions_validation.bin": "9663c89047bd6c30cfdb138626266ce08397b35eedf24ce56c1e36cab9e9e75b",
+    "predictions_test.bin": "bce2f237ae433323cd4621ecbbe51f07660a8ca45939d4de4142d9272cc15b21"
+  },
+  "assembly_outputs_sha256": {
+    "best.bin": "869f24da6f426cf89dfdde94fd416c6c18db2d1c7972b812c48322f8606d755b",
+    "last.bin": "869f24da6f426cf89dfdde94fd416c6c18db2d1c7972b812c48322f8606d755b",
+    "predictions_train.bin": "6b816d0f2e020b32907d223442c7bb4127a5d354b867ab26461dde83a5a3add2",
+    "predictions_validation.bin": "05ee82f87335b77ad6df2fe057bfb9c2832c200698cba725149634ab7c854d70",
+    "predictions_test.bin": "43b5cb3c10102e834a2f8f57da2f7ed2dcea29a27101cc036b8329b86e145bf4"
+  },
+  "checks": [
+    {
+      "name": "reference_exact.last_parameters",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "reference_exact.best_parameters",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "reference_exact.train.probabilities",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "reference_exact.validation.probabilities",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "reference_exact.test.probabilities",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "transform_257_records_bitwise",
+      "max_absolute_error": 0
+    },
+    {
+      "name": "assembly.best.bin",
+      "max_absolute_error": 2.60770320892334e-06,
+      "atol": 3e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "assembly.last.bin",
+      "max_absolute_error": 2.60770320892334e-06,
+      "atol": 3e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "assembly.predictions_train.bin",
+      "max_absolute_error": 2.9802322387695312e-08,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "probability_sums.predictions_train.bin",
+      "max_absolute_error": 1.7881393432617188e-07,
+      "atol": 2e-06,
+      "rtol": 0.0
+    },
+    {
+      "name": "assembly.predictions_validation.bin",
+      "max_absolute_error": 2.9802322387695312e-08,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "probability_sums.predictions_validation.bin",
+      "max_absolute_error": 1.7881393432617188e-07,
+      "atol": 2e-06,
+      "rtol": 0.0
+    },
+    {
+      "name": "assembly.predictions_test.bin",
+      "max_absolute_error": 2.9802322387695312e-08,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "probability_sums.predictions_test.bin",
+      "max_absolute_error": 1.1920928955078125e-07,
+      "atol": 2e-06,
+      "rtol": 0.0
+    },
+    {
+      "name": "epoch1.number",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "epoch1.assembly.train_loss",
+      "max_absolute_error": 2.2172000013753745e-07,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch1.assembly.val_loss",
+      "max_absolute_error": 1.1090000029412295e-08,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch1.assembly.train_accuracy",
+      "max_absolute_error": 0.0,
+      "atol": 0,
+      "rtol": 0
+    },
+    {
+      "name": "epoch1.assembly.val_accuracy",
+      "max_absolute_error": 0.0,
+      "atol": 0,
+      "rtol": 0
+    },
+    {
+      "name": "epoch1.assembly.selected_epoch",
+      "max_absolute_error": 0.0,
+      "atol": 0,
+      "rtol": 0
+    },
+    {
+      "name": "epoch2.number",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "epoch2.assembly.train_loss",
+      "max_absolute_error": 3.7099998628775666e-09,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch2.assembly.val_loss",
+      "max_absolute_error": 7.4000001681895355e-09,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch2.assembly.train_accuracy",
+      "max_absolute_error": 0.0,
+      "atol": 0,
+      "rtol": 0
+    },
+    {
+      "name": "epoch2.assembly.val_accuracy",
+      "max_absolute_error": 0.0,
+      "atol": 0,
+      "rtol": 0
+    },
+    {
+      "name": "epoch2.assembly.selected_epoch",
+      "max_absolute_error": 0.0,
+      "atol": 0,
+      "rtol": 0
+    },
+    {
+      "name": "protocol.epochs",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "protocol.train_limit",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "protocol.threads",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "protocol.interop_threads",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "protocol.parameter_count",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "checkpoint.selected_epoch",
+      "max_absolute_error": 0.0,
+      "atol": 0.0,
+      "rtol": 0.0
+    },
+    {
+      "name": "resource_metrics_and_200_timing_samples",
+      "status": "passed"
+    }
+  ],
+  "reference_checks": [
+    {
+      "name": "epoch1.train_loss",
+      "max_absolute_error": 5.662137425588298e-13,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch1.train_accuracy",
+      "max_absolute_error": 7.004119506603956e-14,
+      "atol": 1e-10,
+      "rtol": 0
+    },
+    {
+      "name": "epoch1.val_loss",
+      "max_absolute_error": 4.9036330551643914e-12,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch1.val_accuracy",
+      "max_absolute_error": 2.325917236589703e-14,
+      "atol": 1e-10,
+      "rtol": 0
+    },
+    {
+      "name": "epoch2.train_loss",
+      "max_absolute_error": 3.2938096694579144e-12,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch2.train_accuracy",
+      "max_absolute_error": 3.9690473130349346e-14,
+      "atol": 1e-10,
+      "rtol": 0
+    },
+    {
+      "name": "epoch2.val_loss",
+      "max_absolute_error": 4.618083693230801e-12,
+      "atol": 1e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "epoch2.val_accuracy",
+      "max_absolute_error": 2.7131075164277263e-14,
+      "atol": 1e-10,
+      "rtol": 0
+    },
+    {
+      "name": "last_parameters",
+      "max_absolute_error": 0.0,
+      "atol": 3e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "best_parameters",
+      "max_absolute_error": 0.0,
+      "atol": 3e-05,
+      "rtol": 0.0001
+    },
+    {
+      "name": "train.probabilities",
+      "max_absolute_error": 0.0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "validation.probabilities",
+      "max_absolute_error": 0.0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    },
+    {
+      "name": "test.probabilities",
+      "max_absolute_error": 0.0,
+      "atol": 3e-06,
+      "rtol": 3e-05
+    }
+  ],
+  "errors": [],
+  "scope": "2 epochs; 257 train records (128+128+1); 129 evaluation examples per split",
+  "performance": {
+    "training_seconds": 0.10285987495444715,
+    "training_cpu_seconds": 0.15312399999999993,
+    "peak_rss_loaded_bytes": 463093760,
+    "peak_rss_training_bytes": 524304384,
+    "best_epoch": 2,
+    "best_checkpoint_writes": 2,
+    "best_checkpoint_bytes_written": 43344,
+    "parameter_count": 5418,
+    "threads": 2,
+    "interop_threads": 1,
+    "final_evaluation_seconds": 0.023640999803319573,
+    "prediction_seconds": {
+      "train": 0.007838624995201826,
+      "validation": 0.007610416039824486,
+      "test": 0.007482999935746193
+    },
+    "peak_rss_bytes": 524386304,
+    "process_user_cpu_seconds": 2.300779,
+    "process_system_cpu_seconds": 0.336711,
+    "epochs": 2,
+    "train_limit": 257,
+    "evaluation_counts": {
+      "train": 129,
+      "validation": 129,
+      "test": 129
+    },
+    "training_timing_scope": "epoch train/validation, best checkpoint writes, CSV flushes and progress; excludes setup/input loading, final checkpoint, final evaluation and forward timing",
+    "memory_scope": "RUSAGE_SELF lifetime high-water resident bytes, sampled before training, after training and after final evaluation/timing; includes runtime and loaded inputs",
+    "timing_scope": "forward only; 20 warmups and 100 samples; batch1 and batch128 PyTorch eager CPU forward with two intraop threads",
+    "floating_point": "float32 model/gradients; float64 reporting sums",
+    "framework": {
+      "torch": "2.14.1",
+      "numpy": "2.5.2"
+    },
+    "deterministic_algorithms": true,
+    "preprocessing": "uint8 NHWC -> contiguous float32 NCHW; /255; recorded flip; -.5; /.5",
+    "optimizer": "torch.optim.Adam lr=.001 betas=(.9,.999) eps=1e-8 foreach=False fused=False"
+  }
+}

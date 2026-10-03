@@ -1,0 +1,39 @@
+{
+  "training_seconds": 172.3524422920309,
+  "training_cpu_seconds": 258.72705199999996,
+  "peak_rss_loaded_bytes": 471875584,
+  "peak_rss_training_bytes": 553893888,
+  "best_epoch": 25,
+  "best_checkpoint_writes": 21,
+  "best_checkpoint_bytes_written": 455112,
+  "parameter_count": 5418,
+  "threads": 2,
+  "interop_threads": 1,
+  "final_evaluation_seconds": 3.45157999987714,
+  "prediction_seconds": {
+    "train": 2.57990804198198,
+    "validation": 0.2904681251384318,
+    "test": 0.5797564589884132
+  },
+  "peak_rss_bytes": 554008576,
+  "process_user_cpu_seconds": 240.138493,
+  "process_system_cpu_seconds": 27.386605,
+  "epochs": 25,
+  "train_limit": 45000,
+  "evaluation_counts": {
+    "train": 45000,
+    "validation": 5000,
+    "test": 10000
+  },
+  "training_timing_scope": "epoch train/validation, best checkpoint writes, CSV flushes and progress; excludes setup/input loading, final checkpoint, final evaluation and forward timing",
+  "memory_scope": "RUSAGE_SELF lifetime high-water resident bytes, sampled before training, after training and after final evaluation/timing; includes runtime and loaded inputs",
+  "timing_scope": "forward only; 20 warmups and 100 samples; batch1 and batch128 PyTorch eager CPU forward with two intraop threads",
+  "floating_point": "float32 model/gradients; float64 reporting sums",
+  "framework": {
+    "torch": "2.14.1",
+    "numpy": "2.5.2"
+  },
+  "deterministic_algorithms": true,
+  "preprocessing": "uint8 NHWC -> contiguous float32 NCHW; /255; recorded flip; -.5; /.5",
+  "optimizer": "torch.optim.Adam lr=.001 betas=(.9,.999) eps=1e-8 foreach=False fused=False"
+}

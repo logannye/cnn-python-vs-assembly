@@ -1,0 +1,38 @@
+{
+  "after": {
+    "load_average": [
+      11.931640625,
+      11.10205078125,
+      7.880859375
+    ],
+    "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=23068771)\t100%; charged; 0:00 remaining present: true",
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+    "utc": "2026-10-03T00:16:43.845914+00:00"
+  },
+  "before": {
+    "load_average": [
+      15.7421875,
+      8.63916015625,
+      6.29296875
+    ],
+    "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=23068771)\t100%; charged; 0:00 remaining present: true",
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+    "utc": "2026-10-03T00:13:41.814537+00:00"
+  },
+  "command": [
+    "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/.venv/bin/python",
+    "comparison/python_train.py",
+    "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-inputs-v1/seed-44",
+    "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/matched-cpu-25-v1/raw/seed-44-repeat-1-python",
+    "25",
+    "45000"
+  ],
+  "id": "seed-44-repeat-1-python",
+  "implementation": "python",
+  "order": 9,
+  "process_wall_seconds": 182.0161447499413,
+  "repeat": 1,
+  "returncode": 0,
+  "seed": 44,
+  "source_revision": "9978cb0929d64b16a97b0d70dd6f83b93d78e075"
+}

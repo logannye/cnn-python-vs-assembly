@@ -1,0 +1,37 @@
+{
+  "after": {
+    "load_average": [
+      8.2900390625,
+      9.771484375,
+      7.75634765625
+    ],
+    "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=23068771)\t100%; charged; 0:00 remaining present: true",
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+    "utc": "2026-10-03T00:18:42.557726+00:00"
+  },
+  "before": {
+    "load_average": [
+      9.953125,
+      10.70458984375,
+      7.794921875
+    ],
+    "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=23068771)\t100%; charged; 0:00 remaining present: true",
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+    "utc": "2026-10-03T00:16:58.901629+00:00"
+  },
+  "command": [
+    "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/assembly/build/cnn-assembly",
+    "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/assembly-inputs-v1/seed-44",
+    "/Users/logannye/Documents/Codex/2026-10-02/what/outputs/simple-cnn/results/matched-cpu-25-v1/raw/seed-44-repeat-1-assembly",
+    "25",
+    "45000"
+  ],
+  "id": "seed-44-repeat-1-assembly",
+  "implementation": "assembly",
+  "order": 10,
+  "process_wall_seconds": 103.63144116685726,
+  "repeat": 1,
+  "returncode": 0,
+  "seed": 44,
+  "source_revision": "9978cb0929d64b16a97b0d70dd6f83b93d78e075"
+}

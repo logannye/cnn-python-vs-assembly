@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "auditor_sha256": "03e5830c6bdc2059e4f4bdcdd3eb89a88a11b1fc8325f67f3e4c06787ab231b8",
+  "source_revision": "9978cb0929d64b16a97b0d70dd6f83b93d78e075",
+  "plan_sha256": "439d61e752f1a7b4076e3f690f48d793ae8934a613faf4847e01ef44ca460fb2",
+  "report_summary_sha256": "3bea0f9a416f29d3e7bc67bc8a30337190f504cd9604372b3764c4b5714347b4",
+  "prediction_rows_recomputed": 720000,
+  "unique_test_images": 10000,
+  "repeat_checks": [
+    {
+      "implementation": "python",
+      "seed": 42,
+      "binary_outputs_equal": true,
+      "history_equal": true
+    },
+    {
+      "implementation": "python",
+      "seed": 43,
+      "binary_outputs_equal": true,
+      "history_equal": true
+    },
+    {
+      "implementation": "python",
+      "seed": 44,
+      "binary_outputs_equal": true,
+      "history_equal": true
+    },
+    {
+      "implementation": "assembly",
+      "seed": 42,
+      "binary_outputs_equal": true,
+      "history_equal": true
+    },
+    {
+      "implementation": "assembly",
+      "seed": 43,
+      "binary_outputs_equal": true,
+      "history_equal": true
+    },
+    {
+      "implementation": "assembly",
+      "seed": 44,
+      "binary_outputs_equal": true,
+      "history_equal": true
+    }
+  ],
+  "paired_training_geometric_ratio": 1.693981598068508,
+  "source_files_verified": 33,
+  "status": "passed",
+  "checks": 563,
+  "errors": [],
+  "scope": "Independent NumPy recomputation: all 36 prediction arrays; five scalar metrics and confusion; seed/repeat aggregation; timing ratio; repeat binary hashes and retained provenance. No full image reads, fitting, framework imports, or CI/bootstrap verification.",
+  "numeric_comparison": {
+    "atol": 1e-12,
+    "rtol": 0
+  }
+}

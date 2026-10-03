@@ -159,6 +159,53 @@ def validate_inputs(root):
     return manifest, labels, indices, images, hashes
 
 
+def verify_retained_provenance(results, inputs, plan):
+    """Bind the audit to the completed plan and immutable source snapshot."""
+    completion = read_json(results / "completion.json")
+    require(completion.get("status") == "completed", "Runner did not pass its final gates")
+    expected = plan["prepared_manifest_sha256"]
+    require(digest(inputs / "manifest.json") == expected, "Prepared input manifest changed")
+    require(
+        digest(results / "prepared-manifest.json") == expected,
+        "Retained prepared manifest does not match the measured plan",
+    )
+    retained = read_json(results / "prepared-manifest.json")
+    require(retained["protocol"] == plan["protocol"], "Plan/preparation protocol mismatch")
+    require(
+        digest(results / "cnn-assembly") == plan["binary_sha256"],
+        "Retained assembly executable differs from the measured executable",
+    )
+    hashes = plan["source_hashes"]
+    require(
+        {
+            "assembly/model.S",
+            "assembly/convolution.S",
+            "assembly/runtime.S",
+            "comparison/python_train.py",
+            "comparison/run.py",
+            "src/classifier/model.py",
+        }.issubset(hashes),
+        "Plan is missing measured source fingerprints",
+    )
+    for name, expected in hashes.items():
+        path = Path(name)
+        require(not path.is_absolute() and ".." not in path.parts, "Unsafe retained source path")
+        require(
+            digest(results / "source" / path) == expected,
+            f"Retained measured source mismatch: {name}",
+        )
+    return {
+        "status": "passed",
+        "source_files_verified": len(hashes),
+        "completion_sha256": digest(results / "completion.json"),
+        "plan_sha256": digest(results / "plan.json"),
+        "prepared_manifest_sha256": plan["prepared_manifest_sha256"],
+        "binary_sha256": plan["binary_sha256"],
+        "scope": "Retained source snapshot and executable are checked against the frozen plan; "
+        "the reporting code may be maintained separately after measured processes finish.",
+    }
+
+
 def load_run(root, entry, revision):
     run_id = entry["id"]
     require(
@@ -169,6 +216,13 @@ def load_run(root, entry, revision):
     run = read_json(folder / "run.json")
     require(run["returncode"] == 0, f"Run did not finish: {run_id}")
     require(run["source_revision"] == revision, f"Source changed: {run_id}")
+    for name in ("id", "seed", "repeat", "implementation", "order"):
+        require(run.get(name) == entry[name], f"Run/plan metadata mismatch {name}: {run_id}")
+    for boundary in ("before", "after"):
+        require(
+            "AC Power" in str(run[boundary]["power"]),
+            f"Run was not on AC power at {boundary}: {run_id}",
+        )
     with (folder / "history.csv").open(newline="") as stream:
         history = [
             {
@@ -224,6 +278,13 @@ def load_run(root, entry, revision):
     measurements["validation_phase_seconds"] = sum(row["val_seconds"] for row in history)
     measurements["training_average_cores"] = perf["training_cpu_seconds"] / perf["training_seconds"]
     measurements["training_images_per_second"] = 25 * 45000 / measurements["train_phase_seconds"]
+    previous = 0
+    checkpoint_writes = 0
+    for row in history:
+        checkpoint_writes += int(row["selected_epoch"] != previous)
+        previous = row["selected_epoch"]
+    measurements["checkpoint_writes"] = checkpoint_writes
+    measurements["checkpoint_write_bytes"] = checkpoint_writes * 5418 * 4
     for batch in (1, 128):
         samples = array_file(folder / f"timing_batch{batch}.bin", "<f8", (100,))
         require((samples > 0).all(), "Nonpositive latency sample")
@@ -334,6 +395,19 @@ def paired_test(seed, repeat, python, assembly, labels):
     }
 
 
+def generalization_gaps(metrics):
+    """Compare full unaugmented splits evaluated with the selected checkpoint."""
+    return {
+        "train_minus_validation_accuracy": metrics["train"]["accuracy"]
+        - metrics["validation"]["accuracy"],
+        "train_minus_test_accuracy": metrics["train"]["accuracy"] - metrics["test"]["accuracy"],
+        "validation_minus_train_nll": metrics["validation"]["negative_log_likelihood"]
+        - metrics["train"]["negative_log_likelihood"],
+        "test_minus_train_nll": metrics["test"]["negative_log_likelihood"]
+        - metrics["train"]["negative_log_likelihood"],
+    }
+
+
 def summarize(runs, paired, repeats, revision, input_hashes):
     implementations = {}
     for implementation in IMPLEMENTATIONS:
@@ -349,6 +423,23 @@ def summarize(runs, paired, repeats, revision, input_hashes):
                     for seed in SEEDS
                 ]
                 quality[split][name] = aggregate(values)
+        quality["generalization_gaps"] = {
+            name: aggregate(
+                [
+                    float(
+                        np.mean(
+                            [
+                                generalization_gaps(run["metrics"])[name]
+                                for run in selected
+                                if run["seed"] == seed
+                            ]
+                        )
+                    )
+                    for seed in SEEDS
+                ]
+            )
+            for name in generalization_gaps(selected[0]["metrics"])
+        }
         performance = {}
         for name in selected[0]["performance"]:
             means = [
@@ -436,6 +527,12 @@ def summarize(runs, paired, repeats, revision, input_hashes):
         "across 3 seed means after averaging the 2 repeats. Paired ratios match seed and repeat. "
         "No timing confidence interval or machine-general claim is inferred from 3 seeds.",
         "measurement_scopes": {
+            "generalization_gaps": "Full unaugmented split metrics evaluated from each "
+            "selected checkpoint. Accuracy gaps use fractions, not percentage points; NLL gaps "
+            "use natural-log loss. Online training-history loss is not used for these gaps.",
+            "checkpoint_writes": "Best-checkpoint selection events inferred from selected_epoch "
+            "transitions; bytes are event count times 5418 float32 values. Counts can differ when "
+            "numerical trajectories select different epochs; not a fixed I/O condition.",
             "training": "Transforms, forward/backward, Adam, validation, checkpoint/report writes; "
             "excludes shared input preparation, process startup and final evaluation.",
             "process_wall": "Child launch through exit, including runtime startup, input loading, "
@@ -767,6 +864,7 @@ def figures(output, summary, runs):
 def collect(results, inputs, output):
     require(not output.exists() or not any(output.iterdir()), "Refusing nonempty report output")
     plan = read_json(results / "plan.json")
+    provenance = verify_retained_provenance(results, inputs, plan)
     entries = plan["runs"]
     expected = {
         (impl, seed, repeat) for impl in IMPLEMENTATIONS for seed in SEEDS for repeat in (1, 2)
@@ -782,6 +880,13 @@ def collect(results, inputs, output):
         len(revision) == 40 and all(c in "0123456789abcdef" for c in revision), "Invalid revision"
     )
     manifest, labels, indices, images, input_hashes = validate_inputs(inputs)
+    planned_hashes = {
+        f"seed-{seed}/{name}": value
+        for seed, hashes in plan["input_hashes"].items()
+        for name, value in hashes.items()
+    }
+    require(input_hashes == planned_hashes, "Validated inputs differ from measured plan hashes")
+    require(manifest["protocol"] == plan["protocol"], "Validated input protocol differs from plan")
     torch.set_num_threads(2)
     torch.set_num_interop_threads(1)
     runs = [
@@ -845,6 +950,16 @@ def collect(results, inputs, output):
     ]
     summary = summarize(runs, paired, repeats, revision, input_hashes)
     summary["audit"]["distinct_numerical_result_sets"] = len(cache)
+    summary["audit"]["retained_provenance"] = provenance
+    summary["audit"]["schema_version"] = 2
+    summary["audit"]["collector"] = {
+        "source_hashes": {
+            "comparison/report.py": digest(Path(__file__).resolve()),
+            "src/classifier/metrics.py": digest(Path(classification_metrics.__code__.co_filename)),
+        },
+        "scope": "Collector and metric implementation used for this audit/report. They may "
+        "be updated after measurement; source_revision still identifies the measured programs.",
+    }
     summary["protocol"] = manifest["protocol"]
     summary["run_order"] = entries
     output.mkdir(parents=True, exist_ok=True)
@@ -872,6 +987,7 @@ def collect(results, inputs, output):
                 for split in COUNTS
                 for metric in METRICS
             }
+            | generalization_gaps(run["metrics"])
             for run in runs
         ],
     )

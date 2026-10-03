@@ -1,0 +1,21 @@
+{
+  "training_seconds": 101.455165208,
+  "best_epoch": 25,
+  "parameter_count": 5418,
+  "threads": 2,
+  "final_evaluation_seconds": 2.153973625,
+  "prediction_seconds": {"train": 1.612889500, "validation": 0.179957292, "test": 0.359289833},
+  "peak_rss_bytes": 199901184,
+  "process_user_cpu_seconds": 205.659121000,
+  "process_system_cpu_seconds": 1.245683000,
+  "epochs": 25,
+  "train_limit": 45000,
+  "evaluation_counts": {"train": 45000, "validation": 5000, "test": 10000},
+  "training_cpu_seconds": 201.534756000,
+  "peak_rss_loaded_bytes": 195543040,
+  "peak_rss_training_bytes": 196591616,
+  "training_timing_scope": "epoch loop including transforms, training, validation, checkpoints and progress; excludes setup and final evaluation",
+  "memory_scope": "process RSS high-water through loaded/setup, training, or whole process including evaluation/timing; not allocated model memory",
+  "timing_scope": "forward only; 20 warmups and 100 samples; batch1 caller and batch128 two persistent workers",
+  "floating_point": "float32 model/gradients; float64 reporting sums"
+}
